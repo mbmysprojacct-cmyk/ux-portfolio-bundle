@@ -20,113 +20,112 @@ class UX_Ui_Kit_Widget extends UX_Base_Widget {
     public function get_keywords() { return ['ui kit', 'components', 'states', 'design system', 'buttons', 'cards']; }
 
     protected function register_controls() {
-        $t = 'ux-portfolio-optimized';
 
         $this->add_standard_header_section();
 
-        $this->start_controls_section('components_section', ['label' => __('Components', $t)]);
+        $this->start_controls_section('components_section', ['label' => __('Components', 'ux-portfolio-optimized')]);
 
         $r = new \Elementor\Repeater();
 
         $r->add_control('group', [
-            'label' => __('Group', $t),
+            'label' => __('Group', 'ux-portfolio-optimized'),
             'type' => \Elementor\Controls_Manager::TEXT,
-            'default' => __('Buttons', $t),
-            'description' => __('Components with the same group share a tab (when groups are enabled below).', $t),
+            'default' => __('Buttons', 'ux-portfolio-optimized'),
+            'description' => __('Components with the same group share a tab (when groups are enabled below).', 'ux-portfolio-optimized'),
         ]);
         $r->add_control('name', [
-            'label' => __('Component Name', $t),
+            'label' => __('Component Name', 'ux-portfolio-optimized'),
             'type' => \Elementor\Controls_Manager::TEXT,
-            'default' => __('Primary button', $t),
+            'default' => __('Primary button', 'ux-portfolio-optimized'),
             'label_block' => true,
         ]);
         $r->add_control('image', [
-            'label' => __('Main Image', $t),
+            'label' => __('Main Image', 'ux-portfolio-optimized'),
             'type' => \Elementor\Controls_Manager::MEDIA,
             'media_types' => ['image', 'svg'],
         ]);
         $r->add_control('stage', [
-            'label' => __('Stage Background', $t),
+            'label' => __('Stage Background', 'ux-portfolio-optimized'),
             'type' => \Elementor\Controls_Manager::SELECT,
-            'options' => ['light' => __('Light', $t), 'dark' => __('Dark', $t), 'none' => __('None', $t)],
+            'options' => ['light' => __('Light', 'ux-portfolio-optimized'), 'dark' => __('Dark', 'ux-portfolio-optimized'), 'none' => __('None', 'ux-portfolio-optimized')],
             'default' => 'light',
         ]);
         $r->add_control('states_heading', [
-            'label' => __('States', $t),
+            'label' => __('States', 'ux-portfolio-optimized'),
             'type' => \Elementor\Controls_Manager::HEADING,
             'separator' => 'before',
         ]);
         $r->add_control('states', [
-            'label' => __('State Images', $t),
+            'label' => __('State Images', 'ux-portfolio-optimized'),
             'type' => \Elementor\Controls_Manager::GALLERY,
             'default' => [],
-            'description' => __('Optional. One image per state, in order.', $t),
+            'description' => __('Optional. One image per state, in order.', 'ux-portfolio-optimized'),
         ]);
         $r->add_control('state_labels', [
-            'label' => __('State Labels', $t),
+            'label' => __('State Labels', 'ux-portfolio-optimized'),
             'type' => \Elementor\Controls_Manager::TEXT,
             'label_block' => true,
             'placeholder' => 'Default, Hover, Focus, Disabled',
-            'description' => __('Comma-separated, in the same order as the images.', $t),
+            'description' => __('Comma-separated, in the same order as the images.', 'ux-portfolio-optimized'),
         ]);
         $r->add_control('notes_heading', [
-            'label' => __('Reasoning', $t),
+            'label' => __('Reasoning', 'ux-portfolio-optimized'),
             'type' => \Elementor\Controls_Manager::HEADING,
             'separator' => 'before',
         ]);
         $r->add_control('principle', [
-            'label' => __('Principle', $t),
+            'label' => __('Principle', 'ux-portfolio-optimized'),
             'type' => \Elementor\Controls_Manager::TEXT,
             'label_block' => true,
             'placeholder' => 'Designed Mobile-First',
-            'description' => __('Optional tag naming the principle or finding it answers.', $t),
+            'description' => __('Optional tag naming the principle or finding it answers.', 'ux-portfolio-optimized'),
         ]);
         $r->add_control('why', [
-            'label' => __('Why', $t),
+            'label' => __('Why', 'ux-portfolio-optimized'),
             'type' => \Elementor\Controls_Manager::WYSIWYG,
             'default' => '',
         ]);
         $r->add_control('specs', [
-            'label' => __('Spec Chips', $t),
+            'label' => __('Spec Chips', 'ux-portfolio-optimized'),
             'type' => \Elementor\Controls_Manager::TEXT,
             'label_block' => true,
             'placeholder' => 'Sign red, Ultra 32, radius 0',
-            'description' => __('Optional. Comma-separated tokens or specs.', $t),
+            'description' => __('Optional. Comma-separated tokens or specs.', 'ux-portfolio-optimized'),
         ]);
         $r->add_control('a11y', [
-            'label' => __('Accessibility Note', $t),
+            'label' => __('Accessibility Note', 'ux-portfolio-optimized'),
             'type' => \Elementor\Controls_Manager::TEXT,
             'label_block' => true,
             'placeholder' => '5.9:1 contrast · 48px tap target · 3px focus ring',
         ]);
         $r->add_control('dodont_heading', [
-            'label' => __('Do / Don\'t', $t),
+            'label' => __('Do / Don\'t', 'ux-portfolio-optimized'),
             'type' => \Elementor\Controls_Manager::HEADING,
             'separator' => 'before',
         ]);
         $r->add_control('do_image', [
-            'label' => __('Do Image', $t),
+            'label' => __('Do Image', 'ux-portfolio-optimized'),
             'type' => \Elementor\Controls_Manager::MEDIA,
             'media_types' => ['image', 'svg'],
         ]);
         $r->add_control('do_note', [
-            'label' => __('Do Note', $t),
+            'label' => __('Do Note', 'ux-portfolio-optimized'),
             'type' => \Elementor\Controls_Manager::TEXT,
             'label_block' => true,
         ]);
         $r->add_control('dont_image', [
-            'label' => __('Don\'t Image', $t),
+            'label' => __('Don\'t Image', 'ux-portfolio-optimized'),
             'type' => \Elementor\Controls_Manager::MEDIA,
             'media_types' => ['image', 'svg'],
         ]);
         $r->add_control('dont_note', [
-            'label' => __('Don\'t Note', $t),
+            'label' => __('Don\'t Note', 'ux-portfolio-optimized'),
             'type' => \Elementor\Controls_Manager::TEXT,
             'label_block' => true,
         ]);
 
         $this->add_control('components', [
-            'label' => __('Components', $t),
+            'label' => __('Components', 'ux-portfolio-optimized'),
             'type' => \Elementor\Controls_Manager::REPEATER,
             'fields' => $r->get_controls(),
             'default' => [],
@@ -134,14 +133,14 @@ class UX_Ui_Kit_Widget extends UX_Base_Widget {
         ]);
 
         $this->add_control('layout', [
-            'label' => __('Layout', $t),
+            'label' => __('Layout', 'ux-portfolio-optimized'),
             'type' => \Elementor\Controls_Manager::SELECT,
-            'options' => ['stack' => __('Image beside notes', $t), 'cards' => __('Cards, two across', $t)],
+            'options' => ['stack' => __('Image beside notes', 'ux-portfolio-optimized'), 'cards' => __('Cards, two across', 'ux-portfolio-optimized')],
             'default' => 'stack',
             'separator' => 'before',
         ]);
         $this->add_control('lightbox', [
-            'label' => __('Open Images in Lightbox', $t),
+            'label' => __('Open Images in Lightbox', 'ux-portfolio-optimized'),
             'type' => \Elementor\Controls_Manager::SWITCHER,
             'return_value' => 'yes',
             'default' => 'yes',
@@ -149,7 +148,7 @@ class UX_Ui_Kit_Widget extends UX_Base_Widget {
 
         $this->end_controls_section();
 
-        $this->start_controls_section('groups_section', ['label' => __('Groups', $t)]);
+        $this->start_controls_section('groups_section', ['label' => __('Groups', 'ux-portfolio-optimized')]);
         $this->add_tab_controls('Group', 'grp');
         $this->end_controls_section();
     }

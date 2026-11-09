@@ -17,24 +17,23 @@ class UX_Cs_Panel_Widget extends UX_Base_Widget {
     public function get_script_depends() { return ['ux-cs-layout']; }
 
     protected function register_controls() {
-        $t = 'ux-portfolio-optimized';
-        $this->start_controls_section('filter', ['label' => __('Hiring for', $t)]);
-        $this->add_control('heading', ['label' => __('Heading', $t), 'type' => \Elementor\Controls_Manager::TEXT, 'default' => __('Hiring for', $t)]);
-        $this->add_control('all_label', ['label' => __('"All" button', $t), 'type' => \Elementor\Controls_Manager::TEXT, 'default' => __('Everything', $t)]);
-        $this->add_control('which', ['label' => __('Buttons to show', $t), 'type' => \Elementor\Controls_Manager::SELECT, 'default' => 'auto',
-            'options' => ['auto' => __('Only lenses used on this page', $t), 'all' => __('Every lens', $t)]]);
-        $this->add_control('sync', ['label' => __('Keep ?lens= in the address', $t), 'type' => \Elementor\Controls_Manager::SWITCHER, 'return_value' => 'yes', 'default' => 'yes',
-            'description' => __('So a link like …/?lens=brand opens filtered.', $t)]);
-        $this->add_control('start', ['label' => __('On wide screens, start', $t), 'type' => \Elementor\Controls_Manager::SELECT, 'default' => 'collapsed',
-            'options' => ['collapsed' => __('Collapsed to a strip', $t), 'open' => __('Open', $t)]]);
+        $this->start_controls_section('filter', ['label' => __('Hiring for', 'ux-portfolio-optimized')]);
+        $this->add_control('heading', ['label' => __('Heading', 'ux-portfolio-optimized'), 'type' => \Elementor\Controls_Manager::TEXT, 'default' => __('Hiring for', 'ux-portfolio-optimized')]);
+        $this->add_control('all_label', ['label' => __('"All" button', 'ux-portfolio-optimized'), 'type' => \Elementor\Controls_Manager::TEXT, 'default' => __('Everything', 'ux-portfolio-optimized')]);
+        $this->add_control('which', ['label' => __('Buttons to show', 'ux-portfolio-optimized'), 'type' => \Elementor\Controls_Manager::SELECT, 'default' => 'auto',
+            'options' => ['auto' => __('Only lenses used on this page', 'ux-portfolio-optimized'), 'all' => __('Every lens', 'ux-portfolio-optimized')]]);
+        $this->add_control('sync', ['label' => __('Keep ?lens= in the address', 'ux-portfolio-optimized'), 'type' => \Elementor\Controls_Manager::SWITCHER, 'return_value' => 'yes', 'default' => 'yes',
+            'description' => __('So a link like …/?lens=brand opens filtered.', 'ux-portfolio-optimized')]);
+        $this->add_control('start', ['label' => __('On wide screens, start', 'ux-portfolio-optimized'), 'type' => \Elementor\Controls_Manager::SELECT, 'default' => 'collapsed',
+            'options' => ['collapsed' => __('Collapsed to a strip', 'ux-portfolio-optimized'), 'open' => __('Open', 'ux-portfolio-optimized')]]);
         $this->end_controls_section();
 
-        $this->start_controls_section('contents', ['label' => __('Contents', $t)]);
-        $this->add_control('toc_heading', ['label' => __('Heading', $t), 'type' => \Elementor\Controls_Manager::TEXT, 'default' => __('On this page', $t)]);
-        $this->add_control('expand_label', ['label' => __('Expand all', $t), 'type' => \Elementor\Controls_Manager::TEXT, 'default' => __('Expand all', $t)]);
-        $this->add_control('collapse_label', ['label' => __('Collapse all', $t), 'type' => \Elementor\Controls_Manager::TEXT, 'default' => __('Collapse all', $t)]);
-        $this->add_control('open_label', ['label' => __('Open button (tablet / phone)', $t), 'type' => \Elementor\Controls_Manager::TEXT, 'default' => __('Contents & filter', $t)]);
-        $this->add_control('strip_label', ['label' => __('Collapsed strip', $t), 'type' => \Elementor\Controls_Manager::TEXT, 'default' => __('Contents', $t)]);
+        $this->start_controls_section('contents', ['label' => __('Contents', 'ux-portfolio-optimized')]);
+        $this->add_control('toc_heading', ['label' => __('Heading', 'ux-portfolio-optimized'), 'type' => \Elementor\Controls_Manager::TEXT, 'default' => __('On this page', 'ux-portfolio-optimized')]);
+        $this->add_control('expand_label', ['label' => __('Expand all', 'ux-portfolio-optimized'), 'type' => \Elementor\Controls_Manager::TEXT, 'default' => __('Expand all', 'ux-portfolio-optimized')]);
+        $this->add_control('collapse_label', ['label' => __('Collapse all', 'ux-portfolio-optimized'), 'type' => \Elementor\Controls_Manager::TEXT, 'default' => __('Collapse all', 'ux-portfolio-optimized')]);
+        $this->add_control('open_label', ['label' => __('Open button (tablet / phone)', 'ux-portfolio-optimized'), 'type' => \Elementor\Controls_Manager::TEXT, 'default' => __('Contents & filter', 'ux-portfolio-optimized')]);
+        $this->add_control('strip_label', ['label' => __('Collapsed strip', 'ux-portfolio-optimized'), 'type' => \Elementor\Controls_Manager::TEXT, 'default' => __('Contents', 'ux-portfolio-optimized')]);
         $this->end_controls_section();
     }
 

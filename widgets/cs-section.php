@@ -28,40 +28,39 @@ class UX_Cs_Section_Widget extends UX_Base_Widget {
     }
 
     protected function register_controls() {
-        $t = 'ux-portfolio-optimized';
 
-        $this->start_controls_section('meta', ['label' => __('Section', $t)]);
-        $this->add_control('number', ['label' => __('Number', $t), 'type' => \Elementor\Controls_Manager::TEXT, 'default' => '01']);
+        $this->start_controls_section('meta', ['label' => __('Section', 'ux-portfolio-optimized')]);
+        $this->add_control('number', ['label' => __('Number', 'ux-portfolio-optimized'), 'type' => \Elementor\Controls_Manager::TEXT, 'default' => '01']);
         $this->add_control('anchor', [
-            'label' => __('Anchor ID', $t), 'type' => \Elementor\Controls_Manager::TEXT, 'default' => '',
-            'description' => __('Used in links like #cs-s01. Leave blank to use the number.', $t),
+            'label' => __('Anchor ID', 'ux-portfolio-optimized'), 'type' => \Elementor\Controls_Manager::TEXT, 'default' => '',
+            'description' => __('Used in links like #cs-s01. Leave blank to use the number.', 'ux-portfolio-optimized'),
         ]);
-        $this->add_control('label', ['label' => __('Label', $t), 'type' => \Elementor\Controls_Manager::TEXT, 'default' => __('Client work', $t),
-            'description' => __('For example "Client work" or "Independent continuation".', $t)]);
+        $this->add_control('label', ['label' => __('Label', 'ux-portfolio-optimized'), 'type' => \Elementor\Controls_Manager::TEXT, 'default' => __('Client work', 'ux-portfolio-optimized'),
+            'description' => __('For example "Client work" or "Independent continuation".', 'ux-portfolio-optimized')]);
         $this->add_control('lenses', [
-            'label' => __('Lenses', $t), 'type' => \Elementor\Controls_Manager::SELECT2, 'multiple' => true,
-            'options' => ['all' => __('All roles', $t)] + self::lens_options(), 'default' => ['all'],
-            'description' => __('Which "Hiring for" filters show this section.', $t),
+            'label' => __('Lenses', 'ux-portfolio-optimized'), 'type' => \Elementor\Controls_Manager::SELECT2, 'multiple' => true,
+            'options' => ['all' => __('All roles', 'ux-portfolio-optimized')] + self::lens_options(), 'default' => ['all'],
+            'description' => __('Which "Hiring for" filters show this section.', 'ux-portfolio-optimized'),
         ]);
-        $this->add_control('lens_text', ['label' => __('Lens text (optional)', $t), 'type' => \Elementor\Controls_Manager::TEXT, 'default' => '',
-            'description' => __('Overrides the small text at the top right. Blank = built from the lenses.', $t)]);
-        $this->add_control('short', ['label' => __('Contents label', $t), 'type' => \Elementor\Controls_Manager::TEXT, 'default' => '',
-            'description' => __('Short name in "On this page". Blank = the heading.', $t)]);
+        $this->add_control('lens_text', ['label' => __('Lens text (optional)', 'ux-portfolio-optimized'), 'type' => \Elementor\Controls_Manager::TEXT, 'default' => '',
+            'description' => __('Overrides the small text at the top right. Blank = built from the lenses.', 'ux-portfolio-optimized')]);
+        $this->add_control('short', ['label' => __('Contents label', 'ux-portfolio-optimized'), 'type' => \Elementor\Controls_Manager::TEXT, 'default' => '',
+            'description' => __('Short name in "On this page". Blank = the heading.', 'ux-portfolio-optimized')]);
         $this->end_controls_section();
 
-        $this->start_controls_section('content', ['label' => __('Content', $t)]);
-        $this->add_control('title', ['label' => __('Heading', $t), 'type' => \Elementor\Controls_Manager::TEXT, 'label_block' => true, 'default' => __('Section heading.', $t), 'dynamic' => ['active' => true]]);
-        $this->add_control('summary', ['label' => __('Summary', $t), 'type' => \Elementor\Controls_Manager::WYSIWYG, 'default' => '', 'dynamic' => ['active' => true]]);
+        $this->start_controls_section('content', ['label' => __('Content', 'ux-portfolio-optimized')]);
+        $this->add_control('title', ['label' => __('Heading', 'ux-portfolio-optimized'), 'type' => \Elementor\Controls_Manager::TEXT, 'label_block' => true, 'default' => __('Section heading.', 'ux-portfolio-optimized'), 'dynamic' => ['active' => true]]);
+        $this->add_control('summary', ['label' => __('Summary', 'ux-portfolio-optimized'), 'type' => \Elementor\Controls_Manager::WYSIWYG, 'default' => '', 'dynamic' => ['active' => true]]);
         $this->add_control('visual', [
-            'label' => __('Visual (HTML)', $t), 'type' => \Elementor\Controls_Manager::CODE, 'language' => 'html', 'rows' => 14, 'default' => '',
-            'description' => __('Figure markup using the mcs- figure classes. Images, lists and captions are allowed; scripts are removed.', $t),
+            'label' => __('Visual (HTML)', 'ux-portfolio-optimized'), 'type' => \Elementor\Controls_Manager::CODE, 'language' => 'html', 'rows' => 14, 'default' => '',
+            'description' => __('Figure markup using the mcs- figure classes. Images, lists and captions are allowed; scripts are removed.', 'ux-portfolio-optimized'),
         ]);
         $this->end_controls_section();
 
-        $this->start_controls_section('more', ['label' => __('Keep reading', $t)]);
-        $this->add_control('body', ['label' => __('Longer text', $t), 'type' => \Elementor\Controls_Manager::WYSIWYG, 'default' => '', 'dynamic' => ['active' => true]]);
-        $this->add_control('more_label', ['label' => __('Open label', $t), 'type' => \Elementor\Controls_Manager::TEXT, 'default' => 'keep reading ↓']);
-        $this->add_control('less_label', ['label' => __('Close label', $t), 'type' => \Elementor\Controls_Manager::TEXT, 'default' => 'less ↑']);
+        $this->start_controls_section('more', ['label' => __('Keep reading', 'ux-portfolio-optimized')]);
+        $this->add_control('body', ['label' => __('Longer text', 'ux-portfolio-optimized'), 'type' => \Elementor\Controls_Manager::WYSIWYG, 'default' => '', 'dynamic' => ['active' => true]]);
+        $this->add_control('more_label', ['label' => __('Open label', 'ux-portfolio-optimized'), 'type' => \Elementor\Controls_Manager::TEXT, 'default' => 'keep reading ↓']);
+        $this->add_control('less_label', ['label' => __('Close label', 'ux-portfolio-optimized'), 'type' => \Elementor\Controls_Manager::TEXT, 'default' => 'less ↑']);
         $this->end_controls_section();
     }
 

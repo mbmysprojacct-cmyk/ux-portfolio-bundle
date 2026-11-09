@@ -17,13 +17,12 @@ class UX_Cs_More_Widget extends UX_Base_Widget {
     public function get_script_depends() { return ['ux-cs-layout']; }
 
     protected function register_controls() {
-        $t = 'ux-portfolio-optimized';
-        $this->start_controls_section('content', ['label' => __('Keep reading', $t)]);
+        $this->start_controls_section('content', ['label' => __('Keep reading', 'ux-portfolio-optimized')]);
         $this->add_control('help', ['type' => \Elementor\Controls_Manager::RAW_HTML,
-            'raw' => esc_html__('Widgets placed below this one, in the same section, are hidden until the visitor opens them.', $t),
+            'raw' => esc_html__('Widgets placed below this one, in the same section, are hidden until the visitor opens them.', 'ux-portfolio-optimized'),
             'content_classes' => 'elementor-descriptor']);
-        $this->add_control('more_label', ['label' => __('Open label', $t), 'type' => \Elementor\Controls_Manager::TEXT, 'default' => 'keep reading ↓']);
-        $this->add_control('less_label', ['label' => __('Close label', $t), 'type' => \Elementor\Controls_Manager::TEXT, 'default' => 'less ↑']);
+        $this->add_control('more_label', ['label' => __('Open label', 'ux-portfolio-optimized'), 'type' => \Elementor\Controls_Manager::TEXT, 'default' => 'keep reading ↓']);
+        $this->add_control('less_label', ['label' => __('Close label', 'ux-portfolio-optimized'), 'type' => \Elementor\Controls_Manager::TEXT, 'default' => 'less ↑']);
         $this->end_controls_section();
     }
 

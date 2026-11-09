@@ -32,34 +32,33 @@ class UX_Cs_Hero_Widget extends UX_Base_Widget {
     }
 
     protected function register_controls() {
-        $t = 'ux-portfolio-optimized';
-        $this->start_controls_section('content', ['label' => __('Hero', $t)]);
-        $this->add_control('source', ['label' => __('Content from', $t), 'type' => \Elementor\Controls_Manager::SELECT, 'default' => 'widget',
-            'options' => ['post' => __('Post fields (for templates)', $t), 'widget' => __('This widget', $t)],
-            'description' => __('Post fields = Project Details and Hero Intro on the case study, plus its featured image.', $t)]);
-        $this->add_control('respect_hide', ['label' => __('Skip on posts marked "Hide the template hero"', $t), 'type' => \Elementor\Controls_Manager::SWITCHER, 'return_value' => 'yes', 'default' => 'yes', 'condition' => ['source' => 'post']]);
-        $this->add_control('eyebrow', ['label' => __('Eyebrow', $t), 'type' => \Elementor\Controls_Manager::TEXT, 'label_block' => true, 'default' => __('Case study', $t), 'dynamic' => ['active' => true], 'condition' => ['source' => 'widget']]);
-        $this->add_control('title', ['label' => __('Title', $t), 'type' => \Elementor\Controls_Manager::TEXT, 'label_block' => true, 'default' => '', 'dynamic' => ['active' => true],
-            'description' => __('Blank = the post title.', $t), 'condition' => ['source' => 'widget']]);
-        $this->add_control('subtitle', ['label' => __('Subtitle', $t), 'type' => \Elementor\Controls_Manager::TEXTAREA, 'rows' => 2, 'default' => '', 'dynamic' => ['active' => true], 'condition' => ['source' => 'widget']]);
-        $this->add_control('intro', ['label' => __('Intro', $t), 'type' => \Elementor\Controls_Manager::WYSIWYG, 'default' => '', 'dynamic' => ['active' => true], 'condition' => ['source' => 'widget']]);
+        $this->start_controls_section('content', ['label' => __('Hero', 'ux-portfolio-optimized')]);
+        $this->add_control('source', ['label' => __('Content from', 'ux-portfolio-optimized'), 'type' => \Elementor\Controls_Manager::SELECT, 'default' => 'widget',
+            'options' => ['post' => __('Post fields (for templates)', 'ux-portfolio-optimized'), 'widget' => __('This widget', 'ux-portfolio-optimized')],
+            'description' => __('Post fields = Project Details and Hero Intro on the case study, plus its featured image.', 'ux-portfolio-optimized')]);
+        $this->add_control('respect_hide', ['label' => __('Skip on posts marked "Hide the template hero"', 'ux-portfolio-optimized'), 'type' => \Elementor\Controls_Manager::SWITCHER, 'return_value' => 'yes', 'default' => 'yes', 'condition' => ['source' => 'post']]);
+        $this->add_control('eyebrow', ['label' => __('Eyebrow', 'ux-portfolio-optimized'), 'type' => \Elementor\Controls_Manager::TEXT, 'label_block' => true, 'default' => __('Case study', 'ux-portfolio-optimized'), 'dynamic' => ['active' => true], 'condition' => ['source' => 'widget']]);
+        $this->add_control('title', ['label' => __('Title', 'ux-portfolio-optimized'), 'type' => \Elementor\Controls_Manager::TEXT, 'label_block' => true, 'default' => '', 'dynamic' => ['active' => true],
+            'description' => __('Blank = the post title.', 'ux-portfolio-optimized'), 'condition' => ['source' => 'widget']]);
+        $this->add_control('subtitle', ['label' => __('Subtitle', 'ux-portfolio-optimized'), 'type' => \Elementor\Controls_Manager::TEXTAREA, 'rows' => 2, 'default' => '', 'dynamic' => ['active' => true], 'condition' => ['source' => 'widget']]);
+        $this->add_control('intro', ['label' => __('Intro', 'ux-portfolio-optimized'), 'type' => \Elementor\Controls_Manager::WYSIWYG, 'default' => '', 'dynamic' => ['active' => true], 'condition' => ['source' => 'widget']]);
         $rep = new \Elementor\Repeater();
-        $rep->add_control('label', ['label' => __('Label', $t), 'type' => \Elementor\Controls_Manager::TEXT, 'default' => __('Client', $t)]);
-        $rep->add_control('field', ['label' => __('Value from', $t), 'type' => \Elementor\Controls_Manager::SELECT, 'default' => 'custom', 'options' => self::fact_fields(),
-            'description' => __('A post field is used when Content from = Post fields.', $t)]);
-        $rep->add_control('value', ['label' => __('Value', $t), 'type' => \Elementor\Controls_Manager::TEXT, 'label_block' => true, 'default' => '', 'dynamic' => ['active' => true]]);
-        $this->add_control('facts', ['label' => __('Facts', $t), 'type' => \Elementor\Controls_Manager::REPEATER, 'fields' => $rep->get_controls(), 'title_field' => '{{{ label }}}', 'default' => []]);
+        $rep->add_control('label', ['label' => __('Label', 'ux-portfolio-optimized'), 'type' => \Elementor\Controls_Manager::TEXT, 'default' => __('Client', 'ux-portfolio-optimized')]);
+        $rep->add_control('field', ['label' => __('Value from', 'ux-portfolio-optimized'), 'type' => \Elementor\Controls_Manager::SELECT, 'default' => 'custom', 'options' => self::fact_fields(),
+            'description' => __('A post field is used when Content from = Post fields.', 'ux-portfolio-optimized')]);
+        $rep->add_control('value', ['label' => __('Value', 'ux-portfolio-optimized'), 'type' => \Elementor\Controls_Manager::TEXT, 'label_block' => true, 'default' => '', 'dynamic' => ['active' => true]]);
+        $this->add_control('facts', ['label' => __('Facts', 'ux-portfolio-optimized'), 'type' => \Elementor\Controls_Manager::REPEATER, 'fields' => $rep->get_controls(), 'title_field' => '{{{ label }}}', 'default' => []]);
         $this->end_controls_section();
 
-        $this->start_controls_section('media', ['label' => __('Lead image', $t)]);
-        $this->add_control('show_media', ['label' => __('Show image', $t), 'type' => \Elementor\Controls_Manager::SWITCHER, 'return_value' => 'yes', 'default' => 'yes']);
-        $this->add_control('image', ['label' => __('Image', $t), 'type' => \Elementor\Controls_Manager::MEDIA, 'dynamic' => ['active' => true], 'condition' => ['show_media' => 'yes', 'source' => 'widget']]);
-        $this->add_control('placeholder', ['label' => __('Placeholder text', $t), 'type' => \Elementor\Controls_Manager::TEXT, 'label_block' => true, 'default' => __('Lead image', $t), 'condition' => ['show_media' => 'yes'],
-            'description' => __('Shown until there is an image (the featured image, with Post fields).', $t)]);
+        $this->start_controls_section('media', ['label' => __('Lead image', 'ux-portfolio-optimized')]);
+        $this->add_control('show_media', ['label' => __('Show image', 'ux-portfolio-optimized'), 'type' => \Elementor\Controls_Manager::SWITCHER, 'return_value' => 'yes', 'default' => 'yes']);
+        $this->add_control('image', ['label' => __('Image', 'ux-portfolio-optimized'), 'type' => \Elementor\Controls_Manager::MEDIA, 'dynamic' => ['active' => true], 'condition' => ['show_media' => 'yes', 'source' => 'widget']]);
+        $this->add_control('placeholder', ['label' => __('Placeholder text', 'ux-portfolio-optimized'), 'type' => \Elementor\Controls_Manager::TEXT, 'label_block' => true, 'default' => __('Lead image', 'ux-portfolio-optimized'), 'condition' => ['show_media' => 'yes'],
+            'description' => __('Shown until there is an image (the featured image, with Post fields).', 'ux-portfolio-optimized')]);
         $this->end_controls_section();
 
-        $this->start_controls_section('status', ['label' => __('Filter message', $t)]);
-        $this->add_control('show_all', ['label' => __('Reset button', $t), 'type' => \Elementor\Controls_Manager::TEXT, 'default' => __('Show everything', $t)]);
+        $this->start_controls_section('status', ['label' => __('Filter message', 'ux-portfolio-optimized')]);
+        $this->add_control('show_all', ['label' => __('Reset button', 'ux-portfolio-optimized'), 'type' => \Elementor\Controls_Manager::TEXT, 'default' => __('Show everything', 'ux-portfolio-optimized')]);
         $this->end_controls_section();
     }
 

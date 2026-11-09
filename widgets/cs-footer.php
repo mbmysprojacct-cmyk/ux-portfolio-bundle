@@ -14,16 +14,15 @@ class UX_Cs_Footer_Widget extends UX_Base_Widget {
     public function get_style_depends() { return ['ux-cs-layout']; }
 
     protected function register_controls() {
-        $t = 'ux-portfolio-optimized';
-        $this->start_controls_section('content', ['label' => __('Footer', $t)]);
-        $this->add_control('signature', ['label' => __('Signature', $t), 'type' => \Elementor\Controls_Manager::TEXT, 'default' => 'made by Mystie']);
-        $this->add_control('show_prev', ['label' => __('Show previous card', $t), 'type' => \Elementor\Controls_Manager::SWITCHER, 'default' => 'yes', 'return_value' => 'yes']);
-        $this->add_control('prev_label', ['label' => __('Previous label', $t), 'type' => \Elementor\Controls_Manager::TEXT, 'default' => __('← Previous case study', $t), 'condition' => ['show_prev' => 'yes']]);
-        $this->add_control('next_label', ['label' => __('Next label', $t), 'type' => \Elementor\Controls_Manager::TEXT, 'default' => __('Next case study →', $t)]);
-        $this->add_control('show_kind', ['label' => __('Show project type', $t), 'type' => \Elementor\Controls_Manager::SWITCHER, 'default' => 'yes', 'return_value' => 'yes']);
-        $this->add_control('show_date', ['label' => __('Show date', $t), 'type' => \Elementor\Controls_Manager::SWITCHER, 'default' => 'yes', 'return_value' => 'yes']);
-        $this->add_control('next_url', ['label' => __('Next link override', $t), 'type' => \Elementor\Controls_Manager::URL, 'dynamic' => ['active' => true],
-            'description' => __('Blank = the next case study by date, wrapping to the first. When set, the next card becomes a plain link.', $t)]);
+        $this->start_controls_section('content', ['label' => __('Footer', 'ux-portfolio-optimized')]);
+        $this->add_control('signature', ['label' => __('Signature', 'ux-portfolio-optimized'), 'type' => \Elementor\Controls_Manager::TEXT, 'default' => 'made by Mystie']);
+        $this->add_control('show_prev', ['label' => __('Show previous card', 'ux-portfolio-optimized'), 'type' => \Elementor\Controls_Manager::SWITCHER, 'default' => 'yes', 'return_value' => 'yes']);
+        $this->add_control('prev_label', ['label' => __('Previous label', 'ux-portfolio-optimized'), 'type' => \Elementor\Controls_Manager::TEXT, 'default' => __('← Previous case study', 'ux-portfolio-optimized'), 'condition' => ['show_prev' => 'yes']]);
+        $this->add_control('next_label', ['label' => __('Next label', 'ux-portfolio-optimized'), 'type' => \Elementor\Controls_Manager::TEXT, 'default' => __('Next case study →', 'ux-portfolio-optimized')]);
+        $this->add_control('show_kind', ['label' => __('Show project type', 'ux-portfolio-optimized'), 'type' => \Elementor\Controls_Manager::SWITCHER, 'default' => 'yes', 'return_value' => 'yes']);
+        $this->add_control('show_date', ['label' => __('Show date', 'ux-portfolio-optimized'), 'type' => \Elementor\Controls_Manager::SWITCHER, 'default' => 'yes', 'return_value' => 'yes']);
+        $this->add_control('next_url', ['label' => __('Next link override', 'ux-portfolio-optimized'), 'type' => \Elementor\Controls_Manager::URL, 'dynamic' => ['active' => true],
+            'description' => __('Blank = the next case study by date, wrapping to the first. When set, the next card becomes a plain link.', 'ux-portfolio-optimized')]);
         $this->end_controls_section();
     }
 

@@ -25,21 +25,20 @@ class UX_Cs_Rail_Widget extends UX_Base_Widget {
     }
 
     protected function register_controls() {
-        $t = 'ux-portfolio-optimized';
-        $this->start_controls_section('back', ['label' => __('Back link', $t)]);
-        $this->add_control('back_url', ['label' => __('Link', $t), 'type' => \Elementor\Controls_Manager::URL, 'dynamic' => ['active' => true],
-            'description' => __('Blank = the case study archive.', $t)]);
-        $this->add_control('back_label', ['label' => __('Label', $t), 'type' => \Elementor\Controls_Manager::TEXT, 'default' => __('All work', $t)]);
-        $this->add_control('back_desc', ['label' => __('Tooltip', $t), 'type' => \Elementor\Controls_Manager::TEXT, 'label_block' => true, 'default' => __('Back to every Made by Mystie project', $t)]);
+        $this->start_controls_section('back', ['label' => __('Back link', 'ux-portfolio-optimized')]);
+        $this->add_control('back_url', ['label' => __('Link', 'ux-portfolio-optimized'), 'type' => \Elementor\Controls_Manager::URL, 'dynamic' => ['active' => true],
+            'description' => __('Blank = the case study archive.', 'ux-portfolio-optimized')]);
+        $this->add_control('back_label', ['label' => __('Label', 'ux-portfolio-optimized'), 'type' => \Elementor\Controls_Manager::TEXT, 'default' => __('All work', 'ux-portfolio-optimized')]);
+        $this->add_control('back_desc', ['label' => __('Tooltip', 'ux-portfolio-optimized'), 'type' => \Elementor\Controls_Manager::TEXT, 'label_block' => true, 'default' => __('Back to every Made by Mystie project', 'ux-portfolio-optimized')]);
         $this->end_controls_section();
 
-        $this->start_controls_section('views', ['label' => __('Views', $t)]);
+        $this->start_controls_section('views', ['label' => __('Views', 'ux-portfolio-optimized')]);
         foreach (['case' => ['Case study', 'The story, section by section', 'yes'], 'portfolio' => ['Portfolio', 'Finished pieces from the project', ''], 'docs' => ['Documents', 'Briefs, decks and research files', '']] as $k => $d) {
-            $this->add_control($k . '_show', ['label' => sprintf(__('Show %s', $t), $d[0]), 'type' => \Elementor\Controls_Manager::SWITCHER, 'return_value' => 'yes', 'default' => $d[2], 'separator' => 'before']);
-            $this->add_control($k . '_label', ['label' => __('Label', $t), 'type' => \Elementor\Controls_Manager::TEXT, 'default' => $d[0], 'condition' => [$k . '_show' => 'yes']]);
-            $this->add_control($k . '_desc', ['label' => __('Tooltip', $t), 'type' => \Elementor\Controls_Manager::TEXT, 'label_block' => true, 'default' => $d[1], 'condition' => [$k . '_show' => 'yes']]);
+            $this->add_control($k . '_show', ['label' => sprintf(__('Show %s', 'ux-portfolio-optimized'), $d[0]), 'type' => \Elementor\Controls_Manager::SWITCHER, 'return_value' => 'yes', 'default' => $d[2], 'separator' => 'before']);
+            $this->add_control($k . '_label', ['label' => __('Label', 'ux-portfolio-optimized'), 'type' => \Elementor\Controls_Manager::TEXT, 'default' => $d[0], 'condition' => [$k . '_show' => 'yes']]);
+            $this->add_control($k . '_desc', ['label' => __('Tooltip', 'ux-portfolio-optimized'), 'type' => \Elementor\Controls_Manager::TEXT, 'label_block' => true, 'default' => $d[1], 'condition' => [$k . '_show' => 'yes']]);
             if ($k !== 'case') {
-                $this->add_control($k . '_url', ['label' => __('Link', $t), 'type' => \Elementor\Controls_Manager::URL, 'dynamic' => ['active' => true], 'condition' => [$k . '_show' => 'yes']]);
+                $this->add_control($k . '_url', ['label' => __('Link', 'ux-portfolio-optimized'), 'type' => \Elementor\Controls_Manager::URL, 'dynamic' => ['active' => true], 'condition' => [$k . '_show' => 'yes']]);
             }
         }
         $this->end_controls_section();

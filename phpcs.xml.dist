@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<ruleset name="UX Portfolio Bundle">
+    <description>Code checks for the UX Portfolio Bundle plugin.</description>
+
+    <file>.</file>
+    <exclude-pattern>/vendor/*</exclude-pattern>
+    <exclude-pattern>/assets/*</exclude-pattern>
+
+    <arg name="extensions" value="php"/>
+    <arg name="colors"/>
+    <arg name="parallel" value="8"/>
+    <arg value="sp"/>
+
+    <!-- Supported versions -->
+    <config name="testVersion" value="7.4-"/>
+    <config name="minimum_wp_version" value="6.0"/>
+    <config name="ignore_warnings_on_exit" value="1"/>
+
+    <!-- Must pass: these fail the check -->
+    <rule ref="PHPCompatibilityWP"/>
+    <rule ref="Generic.PHP.Syntax"/>
+    <rule ref="WordPress.DB.PreparedSQL"/>
+    <rule ref="WordPress.DB.PreparedSQLPlaceholders"/>
+    <rule ref="WordPress.Security.ValidatedSanitizedInput"/>
+    <rule ref="WordPress.Security.NonceVerification"/>
+    <rule ref="WordPress.Security.SafeRedirect"/>
+    <rule ref="WordPress.WP.I18n">
+        <properties>
+            <property name="text_domain" type="array">
+                <element value="ux-portfolio-optimized"/>
+            </property>
+        </properties>
+    </rule>
+
+    <!-- Reported, not failing: most of these print values escaped earlier
+         in the same function (reviewed by hand in the November 2026 audit). -->
+    <rule ref="WordPress.Security.EscapeOutput">
+        <type>warning</type>
+    </rule>
+</ruleset>

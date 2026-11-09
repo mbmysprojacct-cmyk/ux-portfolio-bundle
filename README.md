@@ -1,5 +1,7 @@
 # UX Portfolio Bundle
 
+[![Code checks](https://github.com/mbmysprojacct-cmyk/ux-portfolio-bundle/actions/workflows/code-checks.yml/badge.svg)](https://github.com/mbmysprojacct-cmyk/ux-portfolio-bundle/actions/workflows/code-checks.yml)
+
 A WordPress plugin of **51 Elementor widgets** for presenting UX and design case studies: personas, journey maps, affinity maps, user flows, storyboards, wireframes, brand systems, charts and the case study page template itself.
 
 I built it for my own portfolio, [Made by Mystie](https://www.mystiechamberlin.com/design/work/), where it powers 15 published case studies. I've developed it privately since 2025 and published it here in November 2026. Development is ongoing: I add and refine widgets as I build out my portfolio.
@@ -57,6 +59,20 @@ assets/css/cs-layout.css            Case study template layout
 assets/js/ux-bundle.js              Shared widget behavior (tabs, carousels, load more, flows)
 assets/js/cs-layout.js              Case study template behavior (rail, views, filters)
 assets/fonts/                       Bundled open-license web fonts
+```
+
+## Code checks
+
+Every push runs two automated checks on GitHub:
+
+- **Syntax** on PHP 7.4, 8.0 and 8.3.
+- **WordPress coding standards** (PHPCS with WPCS), set up in `phpcs.xml.dist`. These fail the check: PHP 7.4+ compatibility, SQL preparation, input sanitizing, nonce verification, safe redirects and translation text domains. Output escaping is reported as warnings: most flagged lines print values escaped earlier in the same function, which a manual audit confirmed.
+
+To run the same check locally:
+
+```
+composer install
+composer lint
 ```
 
 ## Fonts
