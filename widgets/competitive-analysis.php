@@ -82,7 +82,7 @@ class UX_Competitive_Analysis_Widget extends UX_Base_Widget {
         $s = $this->get_settings_for_display();
         
         if (empty($s['competitors']) || empty($s['features'])) {
-            echo '<p>' . __('Please add competitors and features.', 'ux-portfolio-optimized') . '</p>';
+            echo '<p>' . esc_html__('Please add competitors and features.', 'ux-portfolio-optimized') . '</p>';
             return;
         }
         ?>

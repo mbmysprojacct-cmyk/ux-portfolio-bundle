@@ -313,8 +313,9 @@ class UX_Icon_List_Widget extends UX_Base_Widget {
                     }
                 }
             }
-            if ($svg_inline !== null) {
-                echo $svg_inline;
+            if ($svg_inline !== null) $svg_inline = self::kses_svg($svg_inline);
+            if ($svg_inline !== null && $svg_inline !== '') {
+                echo $svg_inline; // cleaned by kses_svg()
                 return;
             }
             // Fallback to img tag with explicit fill-the-container styles.

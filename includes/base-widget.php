@@ -228,6 +228,70 @@ abstract class UX_Base_Widget extends \Elementor\Widget_Base {
     }
     
     /**
+     * Clean SVG markup with an allowlist before printing it inline.
+     * Keeps shapes, text, gradients, masks and <style>; drops scripts, event
+     * handlers, foreignObject, external images and any non-allowlisted tag.
+     */
+    protected static function kses_svg($svg) {
+        $svg = (string) $svg;
+        $svg = preg_replace('/<\?xml[^>]*\?>/i', '', $svg);
+        $svg = preg_replace('/<!DOCTYPE[^>]*>/i', '', $svg);
+        $svg = preg_replace('/<!--.*?-->/s', '', $svg);
+
+        $common = array_fill_keys(array(
+            'id', 'class', 'style', 'fill', 'fill-rule', 'fill-opacity', 'stroke', 'stroke-width',
+            'stroke-linecap', 'stroke-linejoin', 'stroke-miterlimit', 'stroke-dasharray',
+            'stroke-dashoffset', 'stroke-opacity', 'opacity', 'transform', 'clip-path', 'clip-rule',
+            'mask', 'filter', 'display', 'visibility', 'color', 'font-family', 'font-size',
+            'font-weight', 'font-style', 'text-anchor', 'dominant-baseline', 'letter-spacing',
+            'vector-effect', 'shape-rendering', 'aria-hidden', 'aria-label', 'role', 'focusable',
+        ), true);
+        $el = function ($extra = array()) use ($common) {
+            return array_merge($common, array_fill_keys($extra, true));
+        };
+        $allowed = array(
+            'svg'            => $el(array('xmlns', 'xmlns:xlink', 'viewbox', 'width', 'height', 'preserveaspectratio', 'version', 'x', 'y')),
+            'g'              => $el(),
+            'defs'           => $el(),
+            'title'          => $el(),
+            'desc'           => $el(),
+            'symbol'         => $el(array('viewbox', 'preserveaspectratio')),
+            'use'            => $el(array('href', 'x', 'y', 'width', 'height')),
+            'path'           => $el(array('d', 'pathlength')),
+            'circle'         => $el(array('cx', 'cy', 'r')),
+            'ellipse'        => $el(array('cx', 'cy', 'rx', 'ry')),
+            'rect'           => $el(array('x', 'y', 'width', 'height', 'rx', 'ry')),
+            'line'           => $el(array('x1', 'y1', 'x2', 'y2')),
+            'polyline'       => $el(array('points')),
+            'polygon'        => $el(array('points')),
+            'text'           => $el(array('x', 'y', 'dx', 'dy', 'textlength')),
+            'tspan'          => $el(array('x', 'y', 'dx', 'dy')),
+            'lineargradient' => $el(array('x1', 'y1', 'x2', 'y2', 'gradientunits', 'gradienttransform', 'spreadmethod')),
+            'radialgradient' => $el(array('cx', 'cy', 'r', 'fx', 'fy', 'gradientunits', 'gradienttransform', 'spreadmethod')),
+            'stop'           => $el(array('offset', 'stop-color', 'stop-opacity')),
+            'clippath'       => $el(array('clippathunits')),
+            'mask'           => $el(array('x', 'y', 'width', 'height', 'maskunits', 'maskcontentunits')),
+            'pattern'        => $el(array('x', 'y', 'width', 'height', 'patternunits', 'patterncontentunits', 'patterntransform', 'viewbox')),
+            'style'          => array('type' => true),
+        );
+
+        // Let inline style="" keep SVG paint properties (kses strips unknown CSS properties).
+        $svg_css = function ($props) {
+            return array_merge($props, array('fill', 'fill-opacity', 'fill-rule', 'stroke', 'stroke-width',
+                'stroke-linecap', 'stroke-linejoin', 'stroke-opacity', 'stroke-dasharray', 'stop-color',
+                'stop-opacity', 'opacity', 'isolation', 'mix-blend-mode'));
+        };
+        add_filter('safe_style_css', $svg_css);
+        $clean = wp_kses($svg, $allowed, array('http', 'https'));
+        remove_filter('safe_style_css', $svg_css);
+
+        // <use> may only point at fragments inside this SVG.
+        $clean = preg_replace('/(<use\b[^>]*?)\s+href\s*=\s*(["\'])(?!#)[^"\']*\2/i', '$1', $clean);
+
+        return stripos($clean, '<svg') !== false ? trim($clean) : '';
+    }
+
+    /**
      * Get unique ID for widget instance
      */
     protected function get_widget_id() {

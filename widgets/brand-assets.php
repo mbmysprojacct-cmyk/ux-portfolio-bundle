@@ -1288,11 +1288,7 @@ $font_repeater->add_control('name', [
         <?php
     }
     private function sanitize_svg_markup($svg) {
-        $svg = preg_replace('/<\?xml[^>]*\?>/i', '', $svg);
-        $svg = preg_replace('/<!DOCTYPE[^>]*>/i', '', $svg);
-        $svg = preg_replace('#<script[^>]*>.*?</script>#is', '', $svg);
-        $svg = preg_replace('/\s+on\w+\s*=\s*["\'][^"\']*["\']/i', '', $svg);
-        return trim($svg);
+        return self::kses_svg($svg); // allowlist cleaning, see UX_Base_Widget::kses_svg()
     }
 
     private function logo_is_svg($logo) {
