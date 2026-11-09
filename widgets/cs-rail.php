@@ -73,7 +73,7 @@ class UX_Cs_Rail_Widget extends UX_Base_Widget {
 			$this->add_control(
 				$k . '_show',
 				array(
-					'label'        => sprintf( __( 'Show %s', 'ux-portfolio-optimized' ), $d[0] ),
+					'label'        => sprintf( /* translators: %s: view name */ __( 'Show %s', 'ux-portfolio-optimized' ), $d[0] ),
 					'type'         => \Elementor\Controls_Manager::SWITCHER,
 					'return_value' => 'yes',
 					'default'      => $d[2],
@@ -164,7 +164,7 @@ class UX_Cs_Rail_Widget extends UX_Base_Widget {
 		?>
 		<nav class="mcs-rail" aria-label="<?php esc_attr_e( 'Case study sections', 'ux-portfolio-optimized' ); ?>">
 			<div class="mcs-rail__item">
-				<a class="mcs-rail__back" href="<?php echo esc_url( $back ); ?>" aria-label="<?php echo esc_attr( $s['back_label'] ); ?>"><?php echo $ic['back']; // static SVG ?></a>
+				<a class="mcs-rail__back" href="<?php echo esc_url( $back ); ?>" aria-label="<?php echo esc_attr( $s['back_label'] ); ?>"><?php echo $ic['back']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- static SVG icon ?></a>
 				<span class="mcs-tip" aria-hidden="true"><b><?php echo esc_html( $s['back_label'] ); ?></b><span><?php echo esc_html( $s['back_desc'] ); ?></span></span>
 			</div>
 			<div class="mcs-rail__list" role="tablist" aria-orientation="vertical">
@@ -173,8 +173,8 @@ class UX_Cs_Rail_Widget extends UX_Base_Widget {
 					$did = 'mcs-tip-' . $k . '-' . $uid;
 					?>
 				<div role="presentation"><div class="mcs-rail__item">
-					<a class="mcs-rail__tab" href="<?php echo esc_url( $v['url'] ?: '#' ); ?>" aria-label="<?php echo esc_attr( $v['label'] ); ?>" aria-describedby="<?php echo esc_attr( $did ); ?>"<?php echo $v['cur'] ? ' aria-current="page"' : ''; ?><?php echo $tab_attrs( $k, $v ); // escaped inside ?>>
-						<?php echo $ic[ $k ]; // static SVG ?>
+					<a class="mcs-rail__tab" href="<?php echo esc_url( $v['url'] ?: '#' ); ?>" aria-label="<?php echo esc_attr( $v['label'] ); ?>" aria-describedby="<?php echo esc_attr( $did ); ?>"<?php echo $v['cur'] ? ' aria-current="page"' : ''; ?><?php echo $tab_attrs( $k, $v ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- fixed attribute string; tab attributes escaped in $tab_attrs() ?>>
+						<?php echo $ic[ $k ]; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- static SVG icon ?>
 						<span class="mcs-sr" id="<?php echo esc_attr( $did ); ?>"><?php echo esc_html( $v['desc'] ); ?></span>
 					</a>
 					<span class="mcs-tip" aria-hidden="true"><b><?php echo esc_html( $v['label'] ); ?></b><span><?php echo esc_html( $v['desc'] ); ?></span></span>
@@ -184,7 +184,7 @@ class UX_Cs_Rail_Widget extends UX_Base_Widget {
 		</nav>
 		<nav class="mcs-tabs" role="tablist" aria-label="<?php esc_attr_e( 'Case study tabs', 'ux-portfolio-optimized' ); ?>">
 			<?php foreach ( $views as $k => $v ) : ?>
-				<a class="mcs-tabs__t" href="<?php echo esc_url( $v['url'] ?: '#' ); ?>"<?php echo $v['cur'] ? ' aria-current="page"' : ''; ?><?php echo $tab_attrs( $k, $v ); // escaped inside ?>><?php echo esc_html( $v['label'] ); ?></a>
+				<a class="mcs-tabs__t" href="<?php echo esc_url( $v['url'] ?: '#' ); ?>"<?php echo $v['cur'] ? ' aria-current="page"' : ''; ?><?php echo $tab_attrs( $k, $v ); // escaped inside ?>><?php echo esc_html( $v['label'] ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- fixed attribute string; tab attributes escaped in $tab_attrs() ?></a>
 			<?php endforeach; ?>
 		</nav>
 		<?php

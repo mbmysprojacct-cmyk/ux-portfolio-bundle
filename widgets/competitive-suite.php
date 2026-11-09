@@ -519,7 +519,7 @@ class UX_Competitive_Suite_Widget extends UX_Base_Widget {
 				<img class="ux-cd-logo" src="<?php echo esc_url( $logo ); ?>" alt="<?php echo esc_attr( $name ); ?>" loading="lazy">
 			<?php endif; ?>
 			<?php if ( $name !== '' ) : ?>
-				<span class="ux-cd-name"><?php echo $this->linked_names( $name ); // escaped in linked_names() ?></span>
+				<span class="ux-cd-name"><?php echo $this->linked_names( $name ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped in linked_names() ?></span>
 			<?php endif; ?>
 		</div>
 		<?php

@@ -435,7 +435,7 @@ class UX_Swot_Analysis_Widget extends UX_Base_Widget {
 		$icon     = $s[ $key . '_icon' ] ?? null;
 		$has_icon = is_array( $icon ) && ! empty( $icon['value'] );
 		?>
-		<div class="ux-swot__quadrant quadrant-<?php echo esc_attr( $key ); ?>" style="--swot-color: <?php echo esc_attr( $color ); ?>;">
+		<div class="ux-swot__quadrant quadrant-<?php echo esc_attr( $key ); ?>" style="--swot-color: <?php echo ux_portfolio_esc_css( $color ); ?>;">
 			<?php if ( $title !== '' || $has_icon ) : ?>
 				<div class="ux-swot__head">
 					<?php if ( $has_icon ) : ?>
@@ -514,7 +514,7 @@ class UX_Swot_Analysis_Widget extends UX_Base_Widget {
 					<?php
 					foreach ( $sets as $i => $set ) :
 						$is_on = ( $i === $active );
-						$label = $set['name'] !== '' ? $set['name'] : sprintf( __( 'SWOT %d', 'ux-portfolio-optimized' ), $i + 1 );
+						$label = $set['name'] !== '' ? $set['name'] : sprintf( /* translators: %d: SWOT number */ __( 'SWOT %d', 'ux-portfolio-optimized' ), $i + 1 );
 						?>
 						<button type="button"
 								class="ux-swot-tab<?php echo $is_on ? ' is-active' : ''; ?>"
@@ -534,7 +534,7 @@ class UX_Swot_Analysis_Widget extends UX_Base_Widget {
 						<h3 class="ux-swot-panel__name"><?php echo esc_html( $set['name'] ); ?></h3>
 					<?php endif; ?>
 
-					<div class="<?php echo $classes; ?>">
+					<div class="<?php echo esc_attr( $classes ); ?>">
 						<?php if ( $show_axis ) : ?>
 							<div class="ux-swot__corner"></div>
 							<div class="ux-swot__axis ux-swot__axis--col"><?php echo esc_html( $s['axis_helpful'] ?? '' ); ?></div>

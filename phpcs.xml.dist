@@ -46,12 +46,16 @@
         </properties>
     </rule>
 
-    <!-- Reported, not failing -->
+    <!-- Escaping is enforced. ux_portfolio_esc_css() escapes CSS values. -->
     <rule ref="WordPress.Security.EscapeOutput">
-        <!-- Most flagged lines print values escaped earlier in the same
-             function, which the November 2026 audit confirmed by hand. -->
-        <type>warning</type>
+        <properties>
+            <property name="customEscapingFunctions" type="array">
+                <element value="ux_portfolio_esc_css"/>
+            </property>
+        </properties>
     </rule>
+
+    <!-- Reported, not failing -->
     <rule ref="WordPress.WP.I18n.MissingTranslatorsComment">
         <type>warning</type>
     </rule>

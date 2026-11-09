@@ -195,9 +195,9 @@ class UX_Uvp_Canvas_Widget extends UX_Base_Widget {
 			<div class="ux-uvp-canvas">
 				
 				<div class="ux-uvp-section">
-					<h3 class="ux-uvp-title"><?php _e( 'Customer Profile', 'ux-portfolio-optimized' ); ?></h3>
+					<h3 class="ux-uvp-title"><?php esc_html_e( 'Customer Profile', 'ux-portfolio-optimized' ); ?></h3>
 					
-					<div><strong><?php _e( 'Jobs', 'ux-portfolio-optimized' ); ?></strong></div>
+					<div><strong><?php esc_html_e( 'Jobs', 'ux-portfolio-optimized' ); ?></strong></div>
 					<ul>
 						<?php
 						foreach ( explode( "\n", $s['jobs'] ) as $item ) :
@@ -211,7 +211,7 @@ class UX_Uvp_Canvas_Widget extends UX_Base_Widget {
 						?>
 					</ul>
 					
-					<div><strong><?php _e( 'Pains', 'ux-portfolio-optimized' ); ?></strong></div>
+					<div><strong><?php esc_html_e( 'Pains', 'ux-portfolio-optimized' ); ?></strong></div>
 					<ul>
 						<?php
 						foreach ( explode( "\n", $s['pains'] ) as $item ) :
@@ -225,7 +225,7 @@ class UX_Uvp_Canvas_Widget extends UX_Base_Widget {
 						?>
 					</ul>
 					
-					<div><strong><?php _e( 'Gains', 'ux-portfolio-optimized' ); ?></strong></div>
+					<div><strong><?php esc_html_e( 'Gains', 'ux-portfolio-optimized' ); ?></strong></div>
 					<ul>
 						<?php
 						foreach ( explode( "\n", $s['gains'] ) as $item ) :
@@ -241,9 +241,9 @@ class UX_Uvp_Canvas_Widget extends UX_Base_Widget {
 				</div>
 				
 				<div class="ux-uvp-section">
-					<h3 class="ux-uvp-title"><?php _e( 'Value Map', 'ux-portfolio-optimized' ); ?></h3>
+					<h3 class="ux-uvp-title"><?php esc_html_e( 'Value Map', 'ux-portfolio-optimized' ); ?></h3>
 					
-					<div><strong><?php _e( 'Products & Services', 'ux-portfolio-optimized' ); ?></strong></div>
+					<div><strong><?php esc_html_e( 'Products & Services', 'ux-portfolio-optimized' ); ?></strong></div>
 					<ul>
 						<?php
 						foreach ( explode( "\n", $s['products'] ) as $item ) :
@@ -257,7 +257,7 @@ class UX_Uvp_Canvas_Widget extends UX_Base_Widget {
 						?>
 					</ul>
 					
-					<div><strong><?php _e( 'Gain Creators', 'ux-portfolio-optimized' ); ?></strong></div>
+					<div><strong><?php esc_html_e( 'Gain Creators', 'ux-portfolio-optimized' ); ?></strong></div>
 					<ul>
 						<?php
 						foreach ( explode( "\n", $s['creators'] ) as $item ) :
@@ -271,7 +271,7 @@ class UX_Uvp_Canvas_Widget extends UX_Base_Widget {
 						?>
 					</ul>
 					
-					<div><strong><?php _e( 'Pain Relievers', 'ux-portfolio-optimized' ); ?></strong></div>
+					<div><strong><?php esc_html_e( 'Pain Relievers', 'ux-portfolio-optimized' ); ?></strong></div>
 					<ul>
 						<?php
 						foreach ( explode( "\n", $s['relievers'] ) as $item ) :

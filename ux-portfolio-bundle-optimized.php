@@ -2,7 +2,7 @@
 /**
  * Plugin Name: UX Portfolio Bundle - Optimized
  * Description: 51 Elementor widgets for UX and design case studies: personas, journey maps, affinity maps, user flows, storyboards and more, sharing one stylesheet and one script.
- * Version: 2.21.0
+ * Version: 2.21.1
  * Author: Made by Mystie
  * Author URI: https://www.mystiechamberlin.com/design/
  * License: GPL-2.0-or-later
@@ -22,14 +22,16 @@ if ( function_exists( 'wp_convert_hr_to_bytes' ) ) {
 	add_action(
 		'elementor/init',
 		function () {
-			$current = wp_convert_hr_to_bytes( @ini_get( 'memory_limit' ) );
-			if ( $current > 0 && $current < 268435456 ) { // 256M
-				@ini_set( 'memory_limit', '256M' );
+			$current = wp_convert_hr_to_bytes( ini_get( 'memory_limit' ) );
+			if ( $current > 0 && $current < 268435456 && function_exists( 'ini_set' ) ) { // 256M
+				ini_set( 'memory_limit', '256M' );
 			}
 		},
 		0
 	);
 }
+
+require_once __DIR__ . '/includes/functions.php';
 
 // Autoload widget + include classes on first use, so a class file is only
 // require'd when its class is actually referenced — instead of eagerly loading
@@ -196,7 +198,7 @@ class UX_Portfolio_Bundle_Optimized {
 			// In Elementor preview mode the saved meta may lag the current edits,
 			// so always load there to avoid an unstyled preview.
 			$is_preview = false;
-			if ( isset( $_GET['elementor-preview'] ) ) {
+			if ( isset( $_GET['elementor-preview'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only check for Elementor's preview frame
 				$is_preview = true;
 			} elseif ( method_exists( \Elementor\Plugin::$instance->preview, 'is_preview_mode' )
 						&& \Elementor\Plugin::$instance->preview->is_preview_mode() ) {
@@ -237,7 +239,7 @@ class UX_Portfolio_Bundle_Optimized {
 			'ux-portfolio-bundle',
 			plugins_url( 'assets/css/ux-bundle.css', __FILE__ ),
 			array(),
-			'2.21.0.' . filemtime( __DIR__ . '/assets/css/ux-bundle.css' )
+			'2.21.1.' . filemtime( __DIR__ . '/assets/css/ux-bundle.css' )
 		);
 	}
 
@@ -246,7 +248,7 @@ class UX_Portfolio_Bundle_Optimized {
 			'ux-portfolio-bundle',
 			plugins_url( 'assets/js/ux-bundle.js', __FILE__ ),
 			array( 'jquery' ),
-			'2.21.0.' . filemtime( __DIR__ . '/assets/js/ux-bundle.js' ),
+			'2.21.1.' . filemtime( __DIR__ . '/assets/js/ux-bundle.js' ),
 			true
 		);
 	}
@@ -467,7 +469,7 @@ add_action(
 	'init',
 	function () {
 		$u = plugins_url( 'assets/', __FILE__ );
-		wp_register_style( 'ux-cs-layout', $u . 'css/cs-layout.css', array(), '2.21.0.' . filemtime( __DIR__ . '/assets/css/cs-layout.css' ) );
-		wp_register_script( 'ux-cs-layout', $u . 'js/cs-layout.js', array(), '2.21.0.' . filemtime( __DIR__ . '/assets/js/cs-layout.js' ), true );
+		wp_register_style( 'ux-cs-layout', $u . 'css/cs-layout.css', array(), '2.21.1.' . filemtime( __DIR__ . '/assets/css/cs-layout.css' ) );
+		wp_register_script( 'ux-cs-layout', $u . 'js/cs-layout.js', array(), '2.21.1.' . filemtime( __DIR__ . '/assets/js/cs-layout.js' ), true );
 	}
 );

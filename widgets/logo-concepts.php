@@ -374,7 +374,7 @@ class UX_Logo_Concepts_Widget extends UX_Base_Widget {
 			$class = 'ux-bg-dark';
 		} elseif ( $bg === 'custom' ) {
 			$class = 'ux-bg-custom';
-			$style = ' style="background: ' . esc_attr( $custom !== '' ? $custom : '#f3f4f6' ) . ';"';
+			$style = ' style="background: ' . ux_portfolio_esc_css( $custom !== '' ? $custom : '#f3f4f6' ) . ';"';
 		}
 		return array(
 			'class' => $class,
@@ -415,7 +415,7 @@ class UX_Logo_Concepts_Widget extends UX_Base_Widget {
 			if ( ! $lightbox || $url === '' ) {
 				return '';
 			}
-			return '<a class="ux-logo-zoom" href="' . esc_url( $url ) . '" data-elementor-open-lightbox="yes" data-elementor-lightbox-slideshow="' . esc_attr( $lb_group ) . '" data-elementor-lightbox-title="' . esc_attr( $title ) . '" aria-label="' . esc_attr( sprintf( __( 'View %s larger', 'ux-portfolio-optimized' ), $title ) ) . '">';
+			return '<a class="ux-logo-zoom" href="' . esc_url( $url ) . '" data-elementor-open-lightbox="yes" data-elementor-lightbox-slideshow="' . esc_attr( $lb_group ) . '" data-elementor-lightbox-title="' . esc_attr( $title ) . '" aria-label="' . esc_attr( sprintf( /* translators: %s: logo name */ __( 'View %s larger', 'ux-portfolio-optimized' ), $title ) ) . '">';
 		};
 		$lb_close = $lightbox ? '</a>' : '';
 
@@ -435,14 +435,14 @@ class UX_Logo_Concepts_Widget extends UX_Base_Widget {
 					$count  = count( $slides );
 					$cid    = 'ux-lc-' . $this->get_id() . '-' . substr( md5( $logo . $name ), 0, 6 );
 					?>
-				<div class="ux-logo-stage ux-logo-carousel <?php echo esc_attr( $stage['class'] ); ?>"<?php echo $stage['style']; ?> data-ux-logo-carousel role="region" aria-roledescription="carousel" aria-label="<?php echo esc_attr( $name ); ?>">
+				<div class="ux-logo-stage ux-logo-carousel <?php echo esc_attr( $stage['class'] ); ?>"<?php echo $stage['style']; ?> data-ux-logo-carousel role="region" aria-roledescription="carousel" aria-label="<?php echo esc_attr( $name ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- style attribute built with ux_portfolio_esc_css() ?>">
 					<div class="ux-logo-track" id="<?php echo esc_attr( $cid ); ?>" tabindex="0">
 						<?php
 						foreach ( $slides as $si => $su ) :
 							$stitle = $si === 0 ? $name : $name . ' ' . __( 'variation', 'ux-portfolio-optimized' );
 							?>
-						<div class="ux-logo-slide" role="group" aria-roledescription="slide" aria-label="<?php echo esc_attr( sprintf( __( '%1$d of %2$d', 'ux-portfolio-optimized' ), $si + 1, $count ) ); ?>">
-							<?php echo $lb_open( $su, $stitle ); // escaped in closure ?><img class="ux-logo-img" src="<?php echo esc_url( $su ); ?>" alt="<?php echo esc_attr( $stitle ); ?>" loading="lazy"><?php echo $lb_close; ?>
+						<div class="ux-logo-slide" role="group" aria-roledescription="slide" aria-label="<?php echo esc_attr( sprintf( /* translators: %1$d: slide number, %2$d: total slides */ __( '%1$d of %2$d', 'ux-portfolio-optimized' ), $si + 1, $count ) ); ?>">
+							<?php echo $lb_open( $su, $stitle ); // escaped in closure ?><img class="ux-logo-img" src="<?php echo esc_url( $su ); ?>" alt="<?php echo esc_attr( $stitle ); ?>" loading="lazy"><?php echo $lb_close; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- lightbox wrappers escaped in the closure ?>
 						</div>
 						<?php endforeach; ?>
 					</div>
@@ -450,14 +450,14 @@ class UX_Logo_Concepts_Widget extends UX_Base_Widget {
 					<button type="button" class="ux-logo-nav ux-logo-next" aria-controls="<?php echo esc_attr( $cid ); ?>" aria-label="<?php esc_attr_e( 'Next image', 'ux-portfolio-optimized' ); ?>"><span aria-hidden="true">›</span></button>
 					<div class="ux-logo-dots">
 						<?php for ( $di = 0; $di < $count; $di++ ) : ?>
-						<button type="button" class="ux-logo-dot<?php echo $di === 0 ? ' is-active' : ''; ?>" aria-controls="<?php echo esc_attr( $cid ); ?>" aria-label="<?php echo esc_attr( sprintf( __( 'Show image %1$d of %2$d', 'ux-portfolio-optimized' ), $di + 1, $count ) ); ?>"<?php echo $di === 0 ? ' aria-current="true"' : ''; ?>></button>
+						<button type="button" class="ux-logo-dot<?php echo $di === 0 ? ' is-active' : ''; ?>" aria-controls="<?php echo esc_attr( $cid ); ?>" aria-label="<?php echo esc_attr( sprintf( /* translators: %1$d: image number, %2$d: total images */ __( 'Show image %1$d of %2$d', 'ux-portfolio-optimized' ), $di + 1, $count ) ); ?>"<?php echo $di === 0 ? ' aria-current="true"' : ''; ?>></button>
 						<?php endfor; ?>
 					</div>
 				</div>
 				<?php else : ?>
-				<div class="ux-logo-stage <?php echo esc_attr( $stage['class'] ); ?>"<?php echo $stage['style']; ?>>
+				<div class="ux-logo-stage <?php echo esc_attr( $stage['class'] ); ?>"<?php echo $stage['style']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- style attribute built with ux_portfolio_esc_css() ?>>
 					<?php if ( $logo !== '' ) : ?>
-						<?php echo $lb_open( $logo, $name ); // escaped in closure ?><img class="ux-logo-img" src="<?php echo esc_url( $logo ); ?>" alt="<?php echo esc_attr( $name ); ?>" loading="lazy"><?php echo $lb_close; ?>
+						<?php echo $lb_open( $logo, $name ); // escaped in closure ?><img class="ux-logo-img" src="<?php echo esc_url( $logo ); ?>" alt="<?php echo esc_attr( $name ); ?>" loading="lazy"><?php echo $lb_close; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- lightbox wrappers escaped in the closure ?>
 					<?php endif; ?>
 				</div>
 
@@ -465,8 +465,8 @@ class UX_Logo_Concepts_Widget extends UX_Base_Widget {
 				<?php if ( ! empty( $variations ) && ! $carousel ) : ?>
 					<div class="ux-logo-vars">
 						<?php foreach ( $variations as $vu ) : ?>
-							<div class="ux-logo-var <?php echo esc_attr( $var_attrs['class'] ); ?>"<?php echo $var_attrs['style']; ?>>
-								<?php echo $lb_open( $vu, $name . ' ' . __( 'variation', 'ux-portfolio-optimized' ) ); // escaped in closure ?><img src="<?php echo esc_url( $vu ); ?>" alt="<?php echo esc_attr( $name ); ?> variation" loading="lazy"><?php echo $lb_close; ?>
+							<div class="ux-logo-var <?php echo esc_attr( $var_attrs['class'] ); ?>"<?php echo $var_attrs['style']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- style attribute built with ux_portfolio_esc_css() ?>>
+								<?php echo $lb_open( $vu, $name . ' ' . __( 'variation', 'ux-portfolio-optimized' ) ); // escaped in closure ?><img src="<?php echo esc_url( $vu ); ?>" alt="<?php echo esc_attr( $name ); ?> variation" loading="lazy"><?php echo $lb_close; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- lightbox wrappers escaped in the closure ?>
 							</div>
 						<?php endforeach; ?>
 					</div>

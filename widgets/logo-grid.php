@@ -563,7 +563,7 @@ class UX_Logo_Grid_Widget extends UX_Base_Widget {
 							$rel_parts[] = 'nofollow';
 						}
 						$rel = $rel_parts ? ' rel="' . esc_attr( implode( ' ', $rel_parts ) ) . '"' : '';
-						echo '<a href="' . esc_url( $link_url ) . '"' . $target . $rel . '>';
+						echo '<a href="' . esc_url( $link_url ) . '"' . $target . $rel . '>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- target/rel are fixed strings; rel built with esc_attr()
 						echo '<img src="' . esc_url( $img_url ) . '" alt="' . esc_attr( $alt ) . '" loading="lazy">';
 						echo '</a>';
 					} else {
@@ -578,7 +578,7 @@ class UX_Logo_Grid_Widget extends UX_Base_Widget {
 							<span class="logo-item__title"><?php echo esc_html( $name ); ?></span>
 						<?php endif; ?>
 
-						<div class="logo-item__image"><?php echo $img_markup; ?></div>
+						<div class="logo-item__image"><?php echo $img_markup; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- image markup from wp_get_attachment_image() or escaped <img> above ?></div>
 
 						<?php if ( $has_title && $title_position === 'below' ) : ?>
 							<span class="logo-item__title"><?php echo esc_html( $name ); ?></span>

@@ -191,7 +191,7 @@ class UX_Visual_Competitive_Analysis_Widget extends UX_Base_Widget {
 			$this->add_control(
 				'show_' . $key,
 				array(
-					'label'   => sprintf( __( 'Show "%s"', 'ux-portfolio-optimized' ), $default_label ),
+					'label'   => sprintf( /* translators: %s: column label */ __( 'Show "%s"', 'ux-portfolio-optimized' ), $default_label ),
 					'type'    => \Elementor\Controls_Manager::SWITCHER,
 					'default' => $default_show,
 				)
@@ -200,7 +200,7 @@ class UX_Visual_Competitive_Analysis_Widget extends UX_Base_Widget {
 			$this->add_control(
 				'label_' . $key,
 				array(
-					'label'     => sprintf( __( '"%s" Label', 'ux-portfolio-optimized' ), $default_label ),
+					'label'     => sprintf( /* translators: %s: column label */ __( '"%s" Label', 'ux-portfolio-optimized' ), $default_label ),
 					'type'      => \Elementor\Controls_Manager::TEXT,
 					'default'   => $default_label,
 					'condition' => array( 'show_' . $key => 'yes' ),
@@ -427,7 +427,7 @@ class UX_Visual_Competitive_Analysis_Widget extends UX_Base_Widget {
 				?>
 				<div class="vca-colors">
 					<?php foreach ( $colors as $c ) : ?>
-						<span class="vca-color-swatch" style="background: <?php echo esc_attr( $c ); ?>;" title="<?php echo esc_attr( $c ); ?>"></span>
+						<span class="vca-color-swatch" style="background: <?php echo ux_portfolio_esc_css( $c ); ?>;" title="<?php echo esc_attr( $c ); ?>"></span>
 					<?php endforeach; ?>
 				</div>
 				<?php

@@ -552,7 +552,7 @@ class UX_Wireframe_Showcase_Widget extends UX_Base_Widget {
 											data-elementor-open-lightbox="yes"
 											data-elementor-lightbox-slideshow="<?php echo esc_attr( $slideshow_id ); ?>"
 											data-elementor-lightbox-index="<?php echo esc_attr( $i ); ?>"
-											aria-label="<?php echo esc_attr( sprintf( __( 'View wireframe: %s', 'ux-portfolio-optimized' ), $slide_title ) ); ?>">
+											aria-label="<?php echo esc_attr( sprintf( /* translators: %s: wireframe title */ __( 'View wireframe: %s', 'ux-portfolio-optimized' ), $slide_title ) ); ?>">
 											<img src="<?php echo esc_url( $img_url ); ?>" alt="<?php echo esc_attr( $slide_title ); ?>" loading="lazy">
 										</a>
 									<?php endif; ?>
@@ -587,7 +587,7 @@ class UX_Wireframe_Showcase_Widget extends UX_Base_Widget {
 
 					<div class="carousel-dots">
 						<?php foreach ( $s['slides'] as $i => $slide ) : ?>
-							<button type="button" class="carousel-dot<?php echo $i === 0 ? ' active' : ''; ?>" data-index="<?php echo esc_attr( $i ); ?>" aria-label="<?php echo esc_attr( sprintf( __( 'Go to slide %d', 'ux-portfolio-optimized' ), $i + 1 ) ); ?>"></button>
+							<button type="button" class="carousel-dot<?php echo $i === 0 ? ' active' : ''; ?>" data-index="<?php echo esc_attr( $i ); ?>" aria-label="<?php echo esc_attr( sprintf( /* translators: %d: slide number */ __( 'Go to slide %d', 'ux-portfolio-optimized' ), $i + 1 ) ); ?>"></button>
 						<?php endforeach; ?>
 					</div>
 				<?php endif; ?>

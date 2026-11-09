@@ -624,14 +624,14 @@ class UX_Moodboard_Widget extends UX_Base_Widget {
 									data-lightbox-all-index="<?php echo esc_attr( $this_all_index ); ?>"
 									data-lightbox-gallery-id="<?php echo esc_attr( $group_slideshow ); ?>"
 									data-lightbox-gallery-index="<?php echo esc_attr( $group_index ); ?>"
-									aria-label="<?php echo esc_attr( $caption !== '' ? $caption : sprintf( __( 'Image %d', 'ux-portfolio-optimized' ), $this_all_index + 1 ) ); ?>">
+									aria-label="<?php echo esc_attr( $caption !== '' ? $caption : sprintf( /* translators: %d: image number */ __( 'Image %d', 'ux-portfolio-optimized' ), $this_all_index + 1 ) ); ?>">
 									<img src="<?php echo esc_url( $img_url ); ?>" alt="<?php echo esc_attr( $caption ); ?>" loading="lazy">
 								</a>
 
 								<?php if ( ! empty( $colors ) ) : ?>
 									<div class="moodboard-colors pos-<?php echo esc_attr( $color_position ); ?>">
 										<?php foreach ( $colors as $c ) : ?>
-											<span class="moodboard-color" style="background: <?php echo esc_attr( $c ); ?>;" title="<?php echo esc_attr( $c ); ?>"></span>
+											<span class="moodboard-color" style="background: <?php echo ux_portfolio_esc_css( $c ); ?>;" title="<?php echo esc_attr( $c ); ?>"></span>
 										<?php endforeach; ?>
 									</div>
 								<?php endif; ?>
@@ -649,7 +649,7 @@ class UX_Moodboard_Widget extends UX_Base_Widget {
 									$rel = ' rel="' . esc_attr( implode( ' ', $rel_parts ) ) . '"';
 									?>
 									<a class="moodboard-source"
-										href="<?php echo esc_url( $source_url ); ?>" target="_blank"<?php echo $rel; ?>
+										href="<?php echo esc_url( $source_url ); ?>" target="_blank"<?php echo $rel; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- rel built with esc_attr() ?>
 										aria-label="<?php esc_attr_e( 'View image source', 'ux-portfolio-optimized' ); ?>"
 										title="<?php esc_attr_e( 'View source', 'ux-portfolio-optimized' ); ?>">↗</a>
 								<?php endif; ?>

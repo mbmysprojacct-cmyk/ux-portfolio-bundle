@@ -280,7 +280,7 @@ class UX_Ui_Kit_Widget extends UX_Base_Widget {
 					<?php
 					if ( $main !== '' ) :
 						?>
-						<div class="ux-uikit-stage is-<?php echo esc_attr( $stage ); ?>"><?php echo $main; // escaped in img() ?></div><?php endif; ?>
+						<div class="ux-uikit-stage is-<?php echo esc_attr( $stage ); ?>"><?php echo $main; // escaped in img() ?></div><?php endif; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped in img() ?>
 					<?php if ( $states ) : ?>
 						<ul class="ux-uikit-states">
 							<?php
@@ -293,7 +293,7 @@ class UX_Ui_Kit_Widget extends UX_Base_Widget {
 								}
 								?>
 								<li class="ux-uikit-state">
-									<div class="ux-uikit-state-img is-<?php echo esc_attr( $stage ); ?>"><?php echo $html; // escaped in img() ?></div>
+									<div class="ux-uikit-state-img is-<?php echo esc_attr( $stage ); ?>"><?php echo $html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped in img() ?></div>
 									<?php
 									if ( $label !== '' ) :
 										?>
@@ -339,7 +339,7 @@ class UX_Ui_Kit_Widget extends UX_Base_Widget {
 							}
 							?>
 							<figure class="ux-uikit-<?php echo esc_attr( $p[0] ); ?>">
-								<div class="ux-uikit-dd-img"><?php echo $html; // escaped in img() ?></div>
+								<div class="ux-uikit-dd-img"><?php echo $html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped in img() ?></div>
 								<figcaption><strong><?php echo esc_html( $p[3] ); ?></strong><?php echo $p[2] !== '' ? ' ' . esc_html( $p[2] ) : ''; ?></figcaption>
 							</figure>
 						<?php endforeach; ?>

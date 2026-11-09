@@ -1132,19 +1132,19 @@ class UX_Brand_Assets_Widget extends UX_Base_Widget {
 							$bg        = $logo['background'] ?? 'light';
 							$bg_inline = '';
 							if ( $bg === 'custom' && ! empty( $logo['background_custom'] ) ) {
-								$bg_inline = ' style="background: ' . esc_attr( $logo['background_custom'] ) . '; --ux-tile-bg: ' . esc_attr( $logo['background_custom'] ) . ';"';
+								$bg_inline = ' style="background: ' . ux_portfolio_esc_css( $logo['background_custom'] ) . '; --ux-tile-bg: ' . ux_portfolio_esc_css( $logo['background_custom'] ) . ';"';
 							}
 							$name  = trim( $logo['name'] ?? '' );
 							$usage = trim( $logo['usage'] ?? '' );
 
 							$tile_classes = 'logo-image-wrap bg-' . esc_attr( $bg );
-							$aria         = $name !== '' ? $name : sprintf( __( 'Logo %d', 'ux-portfolio-optimized' ), $lightbox_index + 1 );
+							$aria         = $name !== '' ? $name : sprintf( /* translators: %d: logo number */ __( 'Logo %d', 'ux-portfolio-optimized' ), $lightbox_index + 1 );
 							?>
 							<div class="logo-item">
 								<?php if ( $use_lightbox ) : ?>
 									<?php $lb_url = $img_url . ( ( $is_svg && in_array( $bg, array( 'dark', 'custom' ), true ) ) ? '?ux-on-dark=1' : '' ); ?>
 									<a href="<?php echo esc_url( $lb_url ); ?>"
-										class="<?php echo $tile_classes; ?>"<?php echo $bg_inline; ?>
+										class="<?php echo esc_attr( $tile_classes ); ?>"<?php echo $bg_inline; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- style attribute built with ux_portfolio_esc_css() ?>
 										data-elementor-open-lightbox="yes"
 										data-elementor-lightbox-title="<?php echo esc_attr( $name ); ?>"
 										data-elementor-lightbox-slideshow="<?php echo esc_attr( $logo_slideshow ); ?>"
@@ -1154,7 +1154,7 @@ class UX_Brand_Assets_Widget extends UX_Base_Widget {
 									</a>
 									<?php ++$lightbox_index; ?>
 								<?php else : ?>
-									<div class="<?php echo $tile_classes; ?>"<?php echo $bg_inline; ?> aria-label="<?php echo esc_attr( $aria ); ?>">
+									<div class="<?php echo esc_attr( $tile_classes ); ?>"<?php echo $bg_inline; ?> aria-label="<?php echo esc_attr( $aria ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- style attribute built with ux_portfolio_esc_css() ?>">
 										<?php $this->render_logo_visual( $logo ); ?>
 									</div>
 								<?php endif; ?>
@@ -1176,7 +1176,7 @@ class UX_Brand_Assets_Widget extends UX_Base_Widget {
 					<div class="color-swatches">
 						<?php foreach ( $colors as $color ) : ?>
 							<div class="color-swatch">
-								<div class="swatch-box" style="background: <?php echo esc_attr( $color['color'] ); ?>;"></div>
+								<div class="swatch-box" style="background: <?php echo ux_portfolio_esc_css( $color['color'] ); ?>;"></div>
 								<div class="swatch-name"><?php echo esc_html( $color['name'] ); ?></div>
 								<?php if ( ! empty( $color['hex'] ) ) : ?>
 									<div class="swatch-hex"><?php echo esc_html( $color['hex'] ); ?></div>
@@ -1205,7 +1205,7 @@ class UX_Brand_Assets_Widget extends UX_Base_Widget {
 								continue;
 							}
 							// Fonts are enqueued up front in render() (see top); nothing to do here.
-							$font_style = ' style="font-family: ' . esc_attr( $effective_name ) . ';"';
+							$font_style = ' style="font-family: ' . ux_portfolio_esc_css( $effective_name ) . ';"';
 							?>
 							<div class="font-item<?php echo ( ( $font['show_specimen'] ?? '' ) === 'yes' ) ? ' has-specimen' : ''; ?>">
 								<?php
@@ -1214,10 +1214,10 @@ class UX_Brand_Assets_Widget extends UX_Base_Widget {
 								$name_size     = isset( $font['name_size']['size'] ) ? floatval( $font['name_size']['size'] ) : 24;
 								$name_unit     = $this->safe_unit( $font['name_size']['unit'] ?? 'px' );
 								// The name always renders in the actual font; label only changes the text.
-								$name_style = 'font-family: ' . esc_attr( $effective_name ) . '; font-size: ' . esc_attr( $name_size ) . esc_attr( $name_unit ) . ';';
+								$name_style = 'font-family: ' . ux_portfolio_esc_css( $effective_name ) . '; font-size: ' . ux_portfolio_esc_css( $name_size ) . ux_portfolio_esc_css( $name_unit ) . ';';
 								?>
 								<div class="font-item-head">
-									<div class="font-name" style="<?php echo $name_style; ?>"><?php echo esc_html( $shown_name ); ?></div>
+									<div class="font-name" style="<?php echo $name_style; ?>"><?php echo esc_html( $shown_name ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- built with ux_portfolio_esc_css() ?></div>
 									<div class="font-usage"><?php echo esc_html( $font['usage'] ); ?></div>
 								</div>
 								<?php
@@ -1236,27 +1236,27 @@ class UX_Brand_Assets_Widget extends UX_Base_Widget {
 									$glyph_size     = isset( $font['glyph_size']['size'] ) ? floatval( $font['glyph_size']['size'] ) : 18;
 									$glyph_unit     = $this->safe_unit( $font['glyph_size']['unit'] ?? 'px' );
 									// Sample text: full styling (weight, style, spacing, transform).
-									$spec_base    = 'font-family: ' . esc_attr( $effective_name ) . ';'
-										. ' font-weight: ' . esc_attr( $spec_weight ) . ';'
-										. ' font-style: ' . esc_attr( $spec_fstyle ) . ';'
-										. ' letter-spacing: ' . esc_attr( $spec_ls ) . esc_attr( $spec_ls_unit ) . ';'
-										. ' text-transform: ' . esc_attr( $spec_transform ) . ';';
+									$spec_base    = 'font-family: ' . ux_portfolio_esc_css( $effective_name ) . ';'
+										. ' font-weight: ' . ux_portfolio_esc_css( $spec_weight ) . ';'
+										. ' font-style: ' . ux_portfolio_esc_css( $spec_fstyle ) . ';'
+										. ' letter-spacing: ' . ux_portfolio_esc_css( $spec_ls ) . ux_portfolio_esc_css( $spec_ls_unit ) . ';'
+										. ' text-transform: ' . ux_portfolio_esc_css( $spec_transform ) . ';';
 									$sample_style = $spec_base
-										. ' font-size: ' . esc_attr( $spec_size ) . esc_attr( $spec_size_unit ) . ';'
-										. ' line-height: ' . esc_attr( $spec_lh ) . 'em;'
-										. ( $spec_color !== '' ? ' color: ' . esc_attr( $spec_color ) . ';' : '' );
+										. ' font-size: ' . ux_portfolio_esc_css( $spec_size ) . ux_portfolio_esc_css( $spec_size_unit ) . ';'
+										. ' line-height: ' . ux_portfolio_esc_css( $spec_lh ) . 'em;'
+										. ( $spec_color !== '' ? ' color: ' . ux_portfolio_esc_css( $spec_color ) . ';' : '' );
 									// Alphabet row: just family + its own size. No transform/letter-spacing
 									// (those cramp or alter the reference glyph line).
-									$glyph_style = 'font-family: ' . esc_attr( $effective_name ) . ';'
-										. ' font-weight: ' . esc_attr( $spec_weight ) . ';'
-										. ' font-size: ' . esc_attr( $glyph_size ) . esc_attr( $glyph_unit ) . ';';
+									$glyph_style = 'font-family: ' . ux_portfolio_esc_css( $effective_name ) . ';'
+										. ' font-weight: ' . ux_portfolio_esc_css( $spec_weight ) . ';'
+										. ' font-size: ' . ux_portfolio_esc_css( $glyph_size ) . ux_portfolio_esc_css( $glyph_unit ) . ';';
 									?>
 									<div class="font-specimen">
 										<?php if ( $show_glyphs ) : ?>
-											<div class="font-glyphs" style="<?php echo $glyph_style; ?>">ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>abcdefghijklmnopqrstuvwxyz<br>0123456789</div>
+											<div class="font-glyphs" style="<?php echo $glyph_style; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- built with ux_portfolio_esc_css() ?>">ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>abcdefghijklmnopqrstuvwxyz<br>0123456789</div>
 										<?php endif; ?>
 										<?php if ( $spec_text !== '' ) : ?>
-											<div class="font-sample" style="<?php echo $sample_style; ?>"><?php echo esc_html( $spec_text ); ?></div>
+											<div class="font-sample" style="<?php echo $sample_style; ?>"><?php echo esc_html( $spec_text ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- built with ux_portfolio_esc_css() ?></div>
 										<?php endif; ?>
 									</div>
 								<?php endif; ?>
@@ -1281,7 +1281,7 @@ class UX_Brand_Assets_Widget extends UX_Base_Widget {
 			$css_url = esc_url_raw( $css_url, array( 'https' ) );
 			$host    = (string) wp_parse_url( $css_url, PHP_URL_HOST );
 			if ( $css_url !== '' && in_array( $host, array( 'use.typekit.net', 'fonts.googleapis.com' ), true ) ) {
-				wp_enqueue_style( 'ux-ba-fonts-' . md5( $css_url ), $css_url, array(), null );
+				wp_enqueue_style( 'ux-ba-fonts-' . md5( $css_url ), $css_url, array(), null ); // phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion -- third-party font CSS; a ?ver= query would bypass the font host's cache
 			}
 		}
 		if ( ( $s['show_fonts'] ?? 'yes' ) === 'yes' && ! empty( $s['fonts'] ) && is_array( $s['fonts'] )
@@ -1312,7 +1312,7 @@ class UX_Brand_Assets_Widget extends UX_Base_Widget {
 				$this->render_sections( $s, $all_logos, $all_colors, $all_fonts );
 				$this->render_icons( $s );
 				$this->render_graphics( $s );
-				echo $this->collapse_sections( (string) ob_get_clean(), $s ); // markup built and escaped above
+				echo $this->collapse_sections( (string) ob_get_clean(), $s ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- markup built and escaped above
 			} else {
 				// Bucket each item type by its Direction name, preserving first-seen
 				// order. Two passes: (1) collect the NAMED directions across all item
@@ -1364,7 +1364,7 @@ class UX_Brand_Assets_Widget extends UX_Base_Widget {
 				$active    = ( $default !== '' && in_array( $default, $dir_order, true ) ) ? $default : $dir_order[0];
 				$wid       = esc_attr( $this->get_id() );
 				?>
-				<div class="brand-directions" data-ux-brandtabs data-widget-id="<?php echo $wid; ?>">
+				<div class="brand-directions" data-ux-brandtabs data-widget-id="<?php echo esc_attr( $wid ); ?>">
 					<?php if ( $show_tabs ) : ?>
 						<div class="ux-tabs" role="tablist">
 							<?php foreach ( $dir_order as $di => $dname ) : ?>
@@ -1376,7 +1376,7 @@ class UX_Brand_Assets_Widget extends UX_Base_Widget {
 					foreach ( $dir_order as $di => $dname ) :
 						$hidden = ( $show_tabs && $dname !== $active ) ? ' is-hidden' : '';
 						?>
-						<div class="brand-direction-panel<?php echo $hidden; ?>" data-bd-panel="<?php echo esc_attr( $di ); ?>">
+						<div class="brand-direction-panel<?php echo esc_attr( $hidden ); ?>" data-bd-panel="<?php echo esc_attr( $di ); ?>">
 							<?php if ( ! $show_tabs && count( $dir_order ) > 1 ) : ?>
 								<h3 class="brand-direction-name"><?php echo esc_html( $dname ); ?></h3>
 							<?php endif; ?>
@@ -1752,7 +1752,7 @@ class UX_Brand_Assets_Widget extends UX_Base_Widget {
 											$full = $it['url'];
 										}
 										?>
-										<a class="brand-graphic-link" href="<?php echo esc_url( $full ); ?>" data-elementor-open-lightbox="yes" data-elementor-lightbox-slideshow="<?php echo esc_attr( $slideshow ); ?>" data-elementor-lightbox-title="<?php echo esc_attr( $name !== '' ? $name : $alt ); ?>" data-elementor-lightbox-description="<?php echo esc_attr( $usage ); ?>" aria-label="<?php echo esc_attr( sprintf( __( 'View larger: %s', 'ux-portfolio-optimized' ), $name !== '' ? $name : $alt ) ); ?>">
+										<a class="brand-graphic-link" href="<?php echo esc_url( $full ); ?>" data-elementor-open-lightbox="yes" data-elementor-lightbox-slideshow="<?php echo esc_attr( $slideshow ); ?>" data-elementor-lightbox-title="<?php echo esc_attr( $name !== '' ? $name : $alt ); ?>" data-elementor-lightbox-description="<?php echo esc_attr( $usage ); ?>" aria-label="<?php echo esc_attr( sprintf( /* translators: %s: graphic name */ __( 'View larger: %s', 'ux-portfolio-optimized' ), $name !== '' ? $name : $alt ) ); ?>">
 											<img src="<?php echo esc_url( $it['url'] ); ?>" alt="<?php echo esc_attr( $alt ); ?>" loading="lazy" decoding="async">
 										</a>
 									<?php else : ?>
@@ -1802,7 +1802,7 @@ class UX_Brand_Assets_Widget extends UX_Base_Widget {
 		// Priority 1: pasted SVG markup
 		$svg_markup = trim( $logo['svg_markup'] ?? '' );
 		if ( $svg_markup !== '' && stripos( $svg_markup, '<svg' ) !== false ) {
-			echo $this->sanitize_svg_markup( $svg_markup );
+			echo $this->sanitize_svg_markup( $svg_markup ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- cleaned by kses_svg()
 			return;
 		}
 
@@ -1829,9 +1829,9 @@ class UX_Brand_Assets_Widget extends UX_Base_Widget {
 		if ( $is_svg && ! empty( $img_id ) ) {
 			$file = get_attached_file( $img_id );
 			if ( $file && is_readable( $file ) && filesize( $file ) < 200000 ) {
-				$contents = @file_get_contents( $file );
+				$contents = file_get_contents( $file ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents -- local file from the media library, size-checked above
 				if ( $contents !== false && stripos( $contents, '<svg' ) !== false ) {
-					echo $this->sanitize_svg_markup( $contents );
+					echo $this->sanitize_svg_markup( $contents ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- cleaned by kses_svg()
 					return;
 				}
 			}

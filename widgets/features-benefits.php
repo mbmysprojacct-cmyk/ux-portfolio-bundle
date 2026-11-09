@@ -516,9 +516,9 @@ class UX_Features_Benefits_Widget extends UX_Base_Widget {
 
 				if ( $display === 'label' ) :
 					?>
-					<span class="ux-fb-persona-pill" style="--fb-color: <?php echo esc_attr( $color ); ?>;"><?php echo esc_html( $name ); ?></span>
+					<span class="ux-fb-persona-pill" style="--fb-color: <?php echo ux_portfolio_esc_css( $color ); ?>;"><?php echo esc_html( $name ); ?></span>
 				<?php else : ?>
-					<span class="ux-fb-persona" title="<?php echo esc_attr( $name ); ?>" style="--fb-color: <?php echo esc_attr( $color ); ?>;">
+					<span class="ux-fb-persona" title="<?php echo esc_attr( $name ); ?>" style="--fb-color: <?php echo ux_portfolio_esc_css( $color ); ?>;">
 						<span class="ux-fb-persona-media">
 							<?php if ( ! empty( $img ) ) : ?>
 								<img class="ux-fb-persona-img" src="<?php echo esc_url( $img ); ?>" alt="<?php echo esc_attr( $name ); ?>" loading="lazy">
@@ -656,7 +656,7 @@ class UX_Features_Benefits_Widget extends UX_Base_Widget {
 						$icon     = $p['persona_icon'] ?? null;
 						$has_icon = is_array( $icon ) && ! empty( $icon['value'] );
 						?>
-						<span class="ux-fb-legend-item" style="--fb-color: <?php echo esc_attr( $color ); ?>;">
+						<span class="ux-fb-legend-item" style="--fb-color: <?php echo ux_portfolio_esc_css( $color ); ?>;">
 							<span class="ux-fb-persona-media">
 								<?php if ( ! empty( $img ) ) : ?>
 									<img class="ux-fb-persona-img" src="<?php echo esc_url( $img ); ?>" alt="<?php echo esc_attr( $name ); ?>" loading="lazy">

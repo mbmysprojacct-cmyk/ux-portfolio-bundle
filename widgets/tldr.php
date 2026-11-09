@@ -51,7 +51,7 @@ class UX_Tldr_Widget extends UX_Base_Widget {
 			$this->add_control(
 				$key . '_label',
 				array(
-					'label'     => sprintf( __( '%s label', 'ux-portfolio-optimized' ), $labels[0] ),
+					'label'     => sprintf( /* translators: %s: row name */ __( '%s label', 'ux-portfolio-optimized' ), $labels[0] ),
 					'type'      => \Elementor\Controls_Manager::TEXT,
 					'default'   => $labels[0],
 					'separator' => 'before',
@@ -261,7 +261,7 @@ class UX_Tldr_Widget extends UX_Base_Widget {
 										<li><?php echo esc_html( $line ); ?></li><?php endforeach; ?></ul>
 									<?php
 								else :
-									echo $this->text_block( $row['value'] );
+									echo $this->text_block( $row['value'] ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped in text_block()
 endif;
 								?>
 							</dd>

@@ -458,7 +458,7 @@ class UX_Annotated_Design_Widget extends UX_Base_Widget {
 			$class = 'ux-ad-bg-dark';
 		} elseif ( $bg === 'custom' ) {
 			$class = 'ux-ad-bg-custom';
-			$style = ' style="background: ' . esc_attr( $custom !== '' ? $custom : '#f3f4f6' ) . ';"';
+			$style = ' style="background: ' . ux_portfolio_esc_css( $custom !== '' ? $custom : '#f3f4f6' ) . ';"';
 		}
 		return array(
 			'class' => $class,
@@ -476,7 +476,7 @@ class UX_Annotated_Design_Widget extends UX_Base_Widget {
 
 		if ( $render_img === '' && $sketch_img === '' ) {
 			if ( \Elementor\Plugin::$instance->editor->is_edit_mode() ) {
-				echo '<div class="ux-ad-empty">' . esc_html( sprintf( __( 'Design "%s": add a Rendered Design image in the Designs panel.', 'ux-portfolio-optimized' ), $name ) ) . '</div>';
+				echo '<div class="ux-ad-empty">' . esc_html( sprintf( /* translators: %s: design name */ __( 'Design "%s": add a Rendered Design image in the Designs panel.', 'ux-portfolio-optimized' ), $name ) ) . '</div>';
 			}
 			return;
 		}
@@ -491,7 +491,7 @@ class UX_Annotated_Design_Widget extends UX_Base_Widget {
 				</div>
 			<?php endif; ?>
 
-			<div class="ux-ad-stage <?php echo esc_attr( $bg['class'] ); ?>"<?php echo $bg['style']; ?>>
+			<div class="ux-ad-stage <?php echo esc_attr( $bg['class'] ); ?>"<?php echo $bg['style']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- style attribute built with ux_portfolio_esc_css() ?>>
 				<?php if ( $render_img !== '' ) : ?>
 					<img class="ux-ad-img ux-ad-img-render is-active" src="<?php echo esc_url( $render_img ); ?>" alt="<?php echo esc_attr( $name ); ?>" loading="lazy">
 				<?php endif; ?>
@@ -510,7 +510,7 @@ class UX_Annotated_Design_Widget extends UX_Base_Widget {
 					$num        = $idx + 1;
 					?>
 					<div class="ux-ad-hotspot" style="left: <?php echo esc_attr( $x ); ?>%; top: <?php echo esc_attr( $y ); ?>%;">
-						<button type="button" class="ux-ad-dot" aria-expanded="false" aria-label="<?php echo esc_attr( $h_title !== '' ? $h_title : sprintf( __( 'Concern %d', 'ux-portfolio-optimized' ), $num ) ); ?>">
+						<button type="button" class="ux-ad-dot" aria-expanded="false" aria-label="<?php echo esc_attr( $h_title !== '' ? $h_title : sprintf( /* translators: %d: hotspot number */ __( 'Concern %d', 'ux-portfolio-optimized' ), $num ) ); ?>">
 							<?php
 							if ( $numbered ) {
 								echo esc_html( $num );}
@@ -574,14 +574,14 @@ class UX_Annotated_Design_Widget extends UX_Base_Widget {
 
 		$this->render_standard_header();
 
-		echo '<div class="ux-ad-wrapper" data-ux-adtabs data-widget-id="' . $wid . '">';
+		echo '<div class="ux-ad-wrapper" data-ux-adtabs data-widget-id="' . esc_attr( $wid ) . '">';
 
 		if ( $show_tabs ) {
 			echo '<div class="ux-tabs" role="tablist">';
 			foreach ( $designs as $i => $d ) {
 				$nm = trim( $d['name'] ?? ( 'Design ' . ( $i + 1 ) ) );
 				$on = ( $i === 0 ) ? ' is-active' : '';
-				echo '<button type="button" class="ux-tabs__tab' . $on . '" role="tab" data-ad-tab="' . $i . '">' . esc_html( $nm ) . '</button>';
+				echo '<button type="button" class="ux-tabs__tab' . esc_attr( $on ) . '" role="tab" data-ad-tab="' . esc_attr( $i ) . '">' . esc_html( $nm ) . '</button>';
 			}
 			echo '</div>';
 		}
@@ -590,7 +590,7 @@ class UX_Annotated_Design_Widget extends UX_Base_Widget {
 			$nm     = trim( $d['name'] ?? '' );
 			$hs     = isset( $by_design[ $nm ] ) ? $by_design[ $nm ] : array();
 			$hidden = ( $show_tabs && $i !== 0 ) ? ' is-hidden' : '';
-			echo '<div class="ux-ad-panelwrap' . $hidden . '" data-ad-panel="' . $i . '">';
+			echo '<div class="ux-ad-panelwrap' . esc_attr( $hidden ) . '" data-ad-panel="' . esc_attr( $i ) . '">';
 			if ( ! $show_tabs && count( $designs ) > 1 && $nm !== '' ) {
 				echo '<h3 class="ux-ad-groupname">' . esc_html( $nm ) . '</h3>';
 			}

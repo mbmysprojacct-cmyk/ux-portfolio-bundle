@@ -405,7 +405,7 @@ class UX_Storyboard_Widget extends UX_Base_Widget {
 											data-elementor-open-lightbox="yes"
 											data-elementor-lightbox-slideshow="<?php echo esc_attr( $slideshow_id ); ?>"
 											data-elementor-lightbox-index="<?php echo esc_attr( $i ); ?>"
-											aria-label="<?php echo esc_attr( sprintf( __( 'View frame %s', 'ux-portfolio-optimized' ), $frame['frame_number'] ) ); ?>">
+											aria-label="<?php echo esc_attr( sprintf( /* translators: %s: frame number */ __( 'View frame %s', 'ux-portfolio-optimized' ), $frame['frame_number'] ) ); ?>">
 											<img src="<?php echo esc_url( $img_url ); ?>" alt="" loading="lazy">
 										</a>
 									<?php endif; ?>

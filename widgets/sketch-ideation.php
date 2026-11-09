@@ -757,7 +757,7 @@ class UX_Sketch_Ideation_Widget extends UX_Base_Widget {
 							data-lightbox-all-index="<?php echo esc_attr( $all_index ); ?>"
 							data-lightbox-gallery-index="<?php echo esc_attr( $gallery_index !== null ? $gallery_index : '' ); ?>"
 							data-elementor-lightbox-index="<?php echo esc_attr( $lightbox_index ); ?>"
-							aria-label="<?php echo esc_attr( sprintf( __( 'View sketch: %s', 'ux-portfolio-optimized' ), $alt ) ); ?>">
+							aria-label="<?php echo esc_attr( sprintf( /* translators: %s: sketch title */ __( 'View sketch: %s', 'ux-portfolio-optimized' ), $alt ) ); ?>">
 							<img src="<?php echo esc_url( $img_url ); ?>" alt="<?php echo esc_attr( $alt ); ?>" loading="lazy">
 						</a>
 						<?php if ( ! empty( $sketch['title'] ) || ! empty( $sketch['description'] ) ) : ?>

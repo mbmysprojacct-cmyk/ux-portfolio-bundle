@@ -537,13 +537,13 @@ class UX_Prototype_Display_Widget extends UX_Base_Widget {
 						$screen_aspect = '';
 					}
 				}
-				$screen_style = ( $screen_aspect !== '' ) ? ' style="aspect-ratio: ' . esc_attr( $screen_aspect ) . ';"' : '';
+				$screen_style = ( $screen_aspect !== '' ) ? ' style="aspect-ratio: ' . ux_portfolio_esc_css( $screen_aspect ) . ';"' : '';
 				?>
 				<div class="prototype-container<?php echo $is_active ? '' : ' is-hidden'; ?>"
 					data-prototype="<?php echo esc_attr( $slug ); ?>">
-					<div class="prototype-display device-<?php echo esc_attr( $device ); ?> mode-<?php echo esc_attr( $mode ); ?><?php echo $no_frame_class; ?><?php echo $hide_footer_class; ?>">
+					<div class="prototype-display device-<?php echo esc_attr( $device ); ?> mode-<?php echo esc_attr( $mode ); ?><?php echo esc_attr( $no_frame_class ); ?><?php echo esc_attr( $hide_footer_class ); ?>">
 						<div class="device-frame">
-							<div class="device-screen"<?php echo $screen_style; ?>>
+							<div class="device-screen"<?php echo $screen_style; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- built with ux_portfolio_esc_css() ?>>
 								<?php $this->render_prototype_content( $p, $mode ); ?>
 							</div>
 						</div>
@@ -589,7 +589,7 @@ class UX_Prototype_Display_Widget extends UX_Base_Widget {
 			}
 			$rel = $rel_parts ? ' rel="' . esc_attr( implode( ' ', $rel_parts ) ) . '"' : '';
 			?>
-			<a href="<?php echo esc_url( $link_url ); ?>"<?php echo $target . $rel; ?> aria-label="<?php esc_attr_e( 'Open prototype', 'ux-portfolio-optimized' ); ?>">
+			<a href="<?php echo esc_url( $link_url ); ?>"<?php echo $target . $rel; ?> aria-label="<?php esc_attr_e( 'Open prototype', 'ux-portfolio-optimized' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- target/rel are fixed strings; rel built with esc_attr() ?>">
 				<img src="<?php echo esc_url( $img_url ); ?>" alt="" loading="lazy">
 			</a>
 			<?php

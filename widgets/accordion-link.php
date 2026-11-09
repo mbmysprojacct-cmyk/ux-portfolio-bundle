@@ -375,7 +375,7 @@ class UX_Accordion_Link_Widget extends UX_Base_Widget {
 		}
 
 		$list_style    = $s['list_style'] ?? 'none';
-		$use_list      = in_array( $list_style, array( 'bullet', 'numbered', 'custom' ) );
+		$use_list      = in_array( $list_style, array( 'bullet', 'numbered', 'custom' ), true );
 		$list_tag      = $list_style === 'numbered' ? 'ol' : 'ul';
 		$wrapper_class = 'ux-acc-opener ux-acc-opener--list-' . $list_style;
 		?>

@@ -738,7 +738,7 @@ class UX_Empathy_Map_Widget extends UX_Base_Widget {
 		$icon     = $s[ $key . '_icon' ] ?? null;
 		$has_icon = is_array( $icon ) && ! empty( $icon['value'] );
 		?>
-		<div class="empathy-quadrant quadrant-<?php echo esc_attr( $key ); ?>" style="--em-color: <?php echo esc_attr( $color ); ?>;">
+		<div class="empathy-quadrant quadrant-<?php echo esc_attr( $key ); ?>" style="--em-color: <?php echo ux_portfolio_esc_css( $color ); ?>;">
 			<?php if ( $title !== '' || $has_icon ) : ?>
 				<h3 class="quadrant-title">
 					<?php if ( $has_icon ) : ?>
@@ -891,7 +891,7 @@ class UX_Empathy_Map_Widget extends UX_Base_Widget {
 					<?php
 					foreach ( $sets as $i => $set ) :
 						$is_on = ( $i === $active );
-						$label = $set['label'] !== '' ? $set['label'] : sprintf( __( 'Map %d', 'ux-portfolio-optimized' ), $i + 1 );
+						$label = $set['label'] !== '' ? $set['label'] : sprintf( /* translators: %d: map number */ __( 'Map %d', 'ux-portfolio-optimized' ), $i + 1 );
 						?>
 						<button type="button"
 								class="empathy-tab<?php echo $is_on ? ' is-active' : ''; ?>"

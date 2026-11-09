@@ -772,7 +772,7 @@ class UX_Style_Tile_Widget extends UX_Base_Widget {
 				<div class="ux-stile__swatches">
 					<?php foreach ( $palette as $c ) : ?>
 						<div class="ux-stile__swatch-item">
-							<div class="ux-stile__swatch" style="background: <?php echo esc_attr( $c['hex'] ); ?>;" title="<?php echo esc_attr( $c['hex'] ); ?>"></div>
+							<div class="ux-stile__swatch" style="background: <?php echo ux_portfolio_esc_css( $c['hex'] ); ?>;" title="<?php echo esc_attr( $c['hex'] ); ?>"></div>
 							<?php if ( ! empty( $c['name'] ) ) : ?>
 								<div class="ux-stile__swatch-name"><?php echo esc_html( $c['name'] ); ?></div>
 							<?php endif; ?>
@@ -788,9 +788,9 @@ class UX_Style_Tile_Widget extends UX_Base_Widget {
 				<div class="ux-stile__section-label"><?php esc_html_e( 'Typography', 'ux-portfolio-optimized' ); ?></div>
 				<?php
 				if ( $heading_sample !== '' ) :
-					$h_style = $heading_font !== '' ? 'font-family: ' . esc_attr( $heading_font ) . ';' : '';
+					$h_style = $heading_font !== '' ? 'font-family: ' . ux_portfolio_esc_css( $heading_font ) . ';' : '';
 					?>
-					<div class="ux-stile__type-heading"<?php echo $h_style !== '' ? ' style="' . $h_style . '"' : ''; ?>>
+					<div class="ux-stile__type-heading"<?php echo $h_style !== '' ? ' style="' . $h_style . '"' : ''; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- built with ux_portfolio_esc_css() ?>>
 						<?php echo esc_html( $heading_sample ); ?>
 					</div>
 					<?php if ( $heading_font !== '' ) : ?>
@@ -800,9 +800,9 @@ class UX_Style_Tile_Widget extends UX_Base_Widget {
 
 				<?php
 				if ( $body_sample !== '' ) :
-					$b_style = $body_font !== '' ? 'font-family: ' . esc_attr( $body_font ) . ';' : '';
+					$b_style = $body_font !== '' ? 'font-family: ' . ux_portfolio_esc_css( $body_font ) . ';' : '';
 					?>
-					<div class="ux-stile__type-body"<?php echo $b_style !== '' ? ' style="' . $b_style . '"' : ''; ?>>
+					<div class="ux-stile__type-body"<?php echo $b_style !== '' ? ' style="' . $b_style . '"' : ''; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- built with ux_portfolio_esc_css() ?>>
 						<?php echo nl2br( esc_html( $body_sample ) ); ?>
 					</div>
 					<?php if ( $body_font !== '' ) : ?>
@@ -842,22 +842,22 @@ class UX_Style_Tile_Widget extends UX_Base_Widget {
 					if ( $button_label !== '' ) :
 						$btn_styles = array();
 						if ( $button_bg !== '' ) {
-							$btn_styles[] = 'background: ' . $button_bg;
+							$btn_styles[] = 'background: ' . ux_portfolio_esc_css( $button_bg );
 						}
 						if ( $button_text !== '' ) {
-							$btn_styles[] = 'color: ' . $button_text;
+							$btn_styles[] = 'color: ' . ux_portfolio_esc_css( $button_text );
 						}
 						$btn_styles[]   = 'border-radius: ' . intval( $button_radius ) . 'px';
-						$btn_style_attr = ' style="' . esc_attr( implode( '; ', $btn_styles ) ) . ';"';
+						$btn_style_attr = ' style="' . implode( '; ', $btn_styles ) . ';"';
 						?>
-						<span class="ux-stile__button"<?php echo $btn_style_attr; ?>><?php echo esc_html( $button_label ); ?></span>
+						<span class="ux-stile__button"<?php echo $btn_style_attr; ?>><?php echo esc_html( $button_label ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- built with ux_portfolio_esc_css() and intval() ?></span>
 					<?php endif; ?>
 
 					<?php
 					if ( $link_sample !== '' ) :
-						$link_style = $link_color !== '' ? ' style="color: ' . esc_attr( $link_color ) . ';"' : '';
+						$link_style = $link_color !== '' ? ' style="color: ' . ux_portfolio_esc_css( $link_color ) . ';"' : '';
 						?>
-						<span class="ux-stile__link"<?php echo $link_style; ?>><?php echo esc_html( $link_sample ); ?></span>
+						<span class="ux-stile__link"<?php echo $link_style; ?>><?php echo esc_html( $link_sample ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- built with ux_portfolio_esc_css() ?></span>
 					<?php endif; ?>
 				</div>
 			</section>

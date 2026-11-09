@@ -624,7 +624,7 @@ class UX_User_Persona_Widget extends UX_Base_Widget {
 		}
 		?>
 		
-			<div class="ux-user-persona" style="--columns: <?php echo $cols; ?>">
+			<div class="ux-user-persona" style="--columns: <?php echo esc_attr( $cols ); ?>">
 			
 			<?php
 			foreach ( $sections as $index => $item ) :
@@ -636,7 +636,7 @@ class UX_User_Persona_Widget extends UX_Base_Widget {
 				$row_span = absint( $item['row_span'] ?? 1 );
 				?>
 				
-				<div class="section" style="grid-column: span <?php echo $span; ?>; grid-row: span <?php echo $row_span; ?>;">
+				<div class="section" style="grid-column: span <?php echo esc_attr( $span ); ?>; grid-row: span <?php echo esc_attr( $row_span ); ?>;">
 					
 					<?php if ( $item['section_type'] === 'basic_info' ) : ?>
 						<?php

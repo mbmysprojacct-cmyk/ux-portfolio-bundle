@@ -157,7 +157,7 @@ class UX_Benefits_Ladder_Widget extends UX_Base_Widget {
 			$this->add_control(
 				$k . '_label',
 				array(
-					'label'     => sprintf( __( '%s Label', 'ux-portfolio-optimized' ), $defs[ $i ][0] ),
+					'label'     => sprintf( /* translators: %s: rung name */ __( '%s Label', 'ux-portfolio-optimized' ), $defs[ $i ][0] ),
 					'type'      => \Elementor\Controls_Manager::TEXT,
 					'default'   => $defs[ $i ][0],
 					'condition' => array( 'show_rung_labels' => 'yes' ),
@@ -203,7 +203,7 @@ class UX_Benefits_Ladder_Widget extends UX_Base_Widget {
 			$this->add_control(
 				$k . '_color',
 				array(
-					'label'     => sprintf( __( '%s Color', 'ux-portfolio-optimized' ), $defs[ $i ][0] ),
+					'label'     => sprintf( /* translators: %s: rung name */ __( '%s Color', 'ux-portfolio-optimized' ), $defs[ $i ][0] ),
 					'type'      => \Elementor\Controls_Manager::COLOR,
 					'default'   => $defs[ $i ][1],
 					'selectors' => array(

@@ -453,7 +453,7 @@ class UX_Icon_List_Widget extends UX_Base_Widget {
 			if ( ! empty( $value['id'] ) ) {
 				$file = get_attached_file( $value['id'] );
 				if ( $file && is_readable( $file ) && filesize( $file ) < 100000 ) {
-					$contents = @file_get_contents( $file );
+					$contents = file_get_contents( $file ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents -- local file from the media library, size-checked above
 					if ( $contents !== false && stripos( $contents, '<svg' ) !== false ) {
 						// Strip XML declaration and DOCTYPE if present.
 						$contents   = preg_replace( '/<\?xml[^>]*\?>/i', '', $contents );
@@ -466,7 +466,7 @@ class UX_Icon_List_Widget extends UX_Base_Widget {
 				$svg_inline = self::kses_svg( $svg_inline );
 			}
 			if ( $svg_inline !== null && $svg_inline !== '' ) {
-				echo $svg_inline; // cleaned by kses_svg()
+				echo $svg_inline; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- cleaned by kses_svg()
 				return;
 			}
 			// Fallback to img tag with explicit fill-the-container styles.
@@ -590,7 +590,7 @@ class UX_Icon_List_Widget extends UX_Base_Widget {
 								if ( $text !== '' ) :
 									if ( ! empty( $link_url ) ) :
 										?>
-										<a class="ux-icon-list__text"<?php echo $link_attrs; ?>><?php echo esc_html( $text ); ?></a>
+										<a class="ux-icon-list__text"<?php echo $link_attrs; ?>><?php echo esc_html( $text ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- link attributes built with esc_url()/esc_attr() ?></a>
 									<?php else : ?>
 										<span class="ux-icon-list__text"><?php echo esc_html( $text ); ?></span>
 										<?php
@@ -627,7 +627,7 @@ class UX_Icon_List_Widget extends UX_Base_Widget {
 						$tag = ! empty( $link_url ) ? 'a' : 'span';
 						?>
 						<li class="ux-icon-list__item">
-							<<?php echo $tag; ?> class="ux-icon-list__row"<?php echo $link_attrs; ?>>
+							<<?php echo tag_escape( $tag ); ?> class="ux-icon-list__row"<?php echo $link_attrs; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- link attributes built with esc_url()/esc_attr() ?>>
 								<?php if ( $has_before ) : ?>
 									<span class="ux-icon-list__icon ux-icon-list__icon--before" aria-hidden="true">
 									<?php
@@ -645,7 +645,7 @@ class UX_Icon_List_Widget extends UX_Base_Widget {
 									?>
 									</span>
 								<?php endif; ?>
-							</<?php echo $tag; ?>>
+							</<?php echo tag_escape( $tag ); ?>>
 						</li>
 						<?php
 					endif;

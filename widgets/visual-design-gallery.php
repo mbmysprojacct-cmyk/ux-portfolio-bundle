@@ -186,7 +186,7 @@ class UX_Visual_Design_Gallery_Widget extends UX_Base_Widget {
 			if ( $scroll ) {
 				echo ' data-scroll-speed="' . esc_attr( $speed ) . '"';}
 			?>
-			style="--ux-gal-ratio: <?php echo esc_attr( $ratio ); ?>; --ux-gal-fit: <?php echo esc_attr( $fit ); ?>;">
+			style="--ux-gal-ratio: <?php echo ux_portfolio_esc_css( $ratio ); ?>; --ux-gal-fit: <?php echo ux_portfolio_esc_css( $fit ); ?>;">
 				<?php
 				foreach ( $s['images'] as $image ) :
 					$id  = absint( $image['id'] ?? 0 );

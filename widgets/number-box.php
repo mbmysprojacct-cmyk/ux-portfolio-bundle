@@ -901,7 +901,7 @@ class UX_Number_Box_Widget extends UX_Base_Widget {
 							$link_key = 'link_' . $index;
 							$this->add_link_attributes( $link_key, $item['link'] );
 							?>
-							<a <?php echo $this->get_render_attribute_string( $link_key ); ?> style="display:block;text-decoration:none;color:inherit;">
+							<a <?php echo $this->get_render_attribute_string( $link_key ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Elementor render attributes are escaped by Elementor ?> style="display:block;text-decoration:none;color:inherit;">
 						<?php endif; ?>
 						
 						<div class="circle_number_widget_layout layout-<?php echo esc_attr( $s['layout'] ); ?>">

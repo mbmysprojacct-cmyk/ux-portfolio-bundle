@@ -205,7 +205,7 @@ class UX_Brand_Development_Process_Widget extends UX_Base_Widget {
 		}
 
 		$allow_multiple = ( $s['allow_multiple'] ?? '' ) === 'yes' ? 'true' : 'false';
-		$icon_style     = in_array( $s['icon_style'] ?? 'chevron', array( 'chevron', 'plus', 'arrow' ) ) ? $s['icon_style'] : 'chevron';
+		$icon_style     = in_array( $s['icon_style'] ?? 'chevron', array( 'chevron', 'plus', 'arrow' ), true ) ? $s['icon_style'] : 'chevron';
 		?>
 		
 		<div class="brand-dev-wrapper">
@@ -214,19 +214,19 @@ class UX_Brand_Development_Process_Widget extends UX_Base_Widget {
 			<div class="brand-stepper-accordion bsa-<?php echo esc_attr( $id ); ?>" data-allow-multiple="<?php echo esc_attr( $allow_multiple ); ?>">
 				<?php
 				foreach ( $s['steps'] as $index => $step ) :
-					$num     = esc_html( $step['step_number'] ?? sprintf( '%02d', $index + 1 ) );
-					$title   = esc_html( $step['step_title'] ?? 'Step' );
-					$desc    = esc_html( $step['step_description'] ?? '' );
+					$num     = (string) ( $step['step_number'] ?? sprintf( '%02d', $index + 1 ) );
+					$title   = (string) ( $step['step_title'] ?? 'Step' );
+					$desc    = (string) ( $step['step_description'] ?? '' );
 					$open    = ( $step['default_open'] ?? '' ) === 'yes';
 					$content = $step['step_content'] ?? '';
 					?>
 					<div class="bsa-card<?php echo $open ? ' active' : ''; ?>">
 						<div class="bsa-header">
-							<div class="bsa-number"><?php echo $num; ?></div>
+							<div class="bsa-number"><?php echo esc_html( $num ); ?></div>
 							<div class="bsa-text">
-								<h3 class="bsa-title"><?php echo $title; ?></h3>
+								<h3 class="bsa-title"><?php echo esc_html( $title ); ?></h3>
 								<?php if ( $desc ) : ?>
-									<p class="bsa-desc"><?php echo $desc; ?></p>
+									<p class="bsa-desc"><?php echo esc_html( $desc ); ?></p>
 								<?php endif; ?>
 							</div>
 							<div class="bsa-icon bsa-icon-<?php echo esc_attr( $icon_style ); ?>">
@@ -248,7 +248,7 @@ class UX_Brand_Development_Process_Widget extends UX_Base_Widget {
 							if ( $template_id > 0 && class_exists( '\Elementor\Plugin' ) ) {
 								$frontend = \Elementor\Plugin::$instance->frontend;
 								if ( method_exists( $frontend, 'get_builder_content_for_display' ) ) {
-									echo $frontend->get_builder_content_for_display( $template_id );
+									echo $frontend->get_builder_content_for_display( $template_id ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Elementor template output, rendered by Elementor
 								} else {
 									echo do_shortcode( wp_kses_post( $content ) );
 								}

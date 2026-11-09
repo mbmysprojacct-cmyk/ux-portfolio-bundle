@@ -547,13 +547,13 @@ class UX_Case_Study_Overview_Widget extends UX_Base_Widget {
 		.cs-card{background:#fff;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,.1);overflow:hidden;height:100%}
 		.cs-card.layout-left,.cs-card.layout-right{display:flex;align-items:stretch}
 		.cs-card.layout-right{flex-direction:row-reverse}
-		.cs-img{display:block;object-fit:<?php echo esc_attr( $image_fit ); ?>;object-position:<?php echo esc_attr( $focal_x ); ?>% <?php echo esc_attr( $focal_y ); ?>%}
-		.cs-card.layout-top .cs-img{width:100%;height:<?php echo esc_attr( $image_height ); ?>px}
-		.cs-card.layout-left .cs-img,.cs-card.layout-right .cs-img{width:<?php echo esc_attr( $image_width ); ?>%;height:auto;min-height:100%;flex-shrink:0}
-		.cs-body{padding:20px;flex:1;display:flex;flex-direction:column;justify-content:<?php echo esc_attr( $overview_valign === 'start' ? 'flex-start' : ( $overview_valign === 'end' ? 'flex-end' : 'center' ) ); ?>;min-width:0;overflow:hidden}
+		.cs-img{display:block;object-fit:<?php echo ux_portfolio_esc_css( $image_fit ); ?>;object-position:<?php echo ux_portfolio_esc_css( $focal_x ); ?>% <?php echo ux_portfolio_esc_css( $focal_y ); ?>%}
+		.cs-card.layout-top .cs-img{width:100%;height:<?php echo ux_portfolio_esc_css( $image_height ); ?>px}
+		.cs-card.layout-left .cs-img,.cs-card.layout-right .cs-img{width:<?php echo ux_portfolio_esc_css( $image_width ); ?>%;height:auto;min-height:100%;flex-shrink:0}
+		.cs-body{padding:20px;flex:1;display:flex;flex-direction:column;justify-content:<?php echo ux_portfolio_esc_css( $overview_valign === 'start' ? 'flex-start' : ( $overview_valign === 'end' ? 'flex-end' : 'center' ) ); ?>;min-width:0;overflow:hidden}
 		.cs-title{font-size:24px;font-weight:700;margin:0 0 10px}
 		.cs-desc{color:#666;margin:0 0 20px}
-		.cs-grid{display:grid;grid-template-columns:repeat(<?php echo esc_attr( $overview_cols ); ?>,1fr);gap:15px;text-align:<?php echo esc_attr( $overview_align ); ?>}
+		.cs-grid{display:grid;grid-template-columns:repeat(<?php echo ux_portfolio_esc_css( $overview_cols ); ?>,1fr);gap:15px;text-align:<?php echo ux_portfolio_esc_css( $overview_align ); ?>}
 		.cs-field{display:flex;gap:8px;align-items:start;justify-content:<?php echo $overview_align === 'center' ? 'center' : ( $overview_align === 'right' ? 'flex-end' : 'flex-start' ); ?>}
 		.cs-icon{width:18px;height:18px;flex-shrink:0;margin-top:2px;display:flex;align-items:center;justify-content:center;color:#666;order:<?php echo $overview_align === 'right' ? '1' : '0'; ?>}
 		.cs-icon i{font-size:16px}
@@ -565,14 +565,14 @@ class UX_Case_Study_Overview_Widget extends UX_Base_Widget {
 		.cs-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:5px}
 		.cs-tag{padding:4px 10px;background:#f0f0f0;border-radius:4px;font-size:13px}
 		@media(max-width:1024px){
-		.cs-card.layout-top .cs-img{height:<?php echo esc_attr( $image_height_tablet ); ?>px}
-		.cs-card.layout-left .cs-img,.cs-card.layout-right .cs-img{width:<?php echo esc_attr( $image_width_tablet ); ?>%}
+		.cs-card.layout-top .cs-img{height:<?php echo ux_portfolio_esc_css( $image_height_tablet ); ?>px}
+		.cs-card.layout-left .cs-img,.cs-card.layout-right .cs-img{width:<?php echo ux_portfolio_esc_css( $image_width_tablet ); ?>%}
 		.cs-grid{grid-template-columns:repeat(2,1fr)}
 		}
 		@media(max-width:600px){
-		.cs-card.layout-top .cs-img{height:<?php echo esc_attr( $image_height_mobile ); ?>px}
+		.cs-card.layout-top .cs-img{height:<?php echo ux_portfolio_esc_css( $image_height_mobile ); ?>px}
 		.cs-card.layout-left,.cs-card.layout-right{flex-direction:column}
-		.cs-card.layout-left .cs-img,.cs-card.layout-right .cs-img{width:100%;height:<?php echo esc_attr( $image_height_mobile ); ?>px;min-height:auto}
+		.cs-card.layout-left .cs-img,.cs-card.layout-right .cs-img{width:100%;height:<?php echo ux_portfolio_esc_css( $image_height_mobile ); ?>px;min-height:auto}
 		.cs-grid{grid-template-columns:1fr}
 		}
 		</style>

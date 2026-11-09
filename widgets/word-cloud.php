@@ -504,7 +504,7 @@ class UX_Word_Cloud_Widget extends UX_Base_Widget {
 					}
 					$style = 'font-size: ' . $font . 'px;';
 					if ( $color !== '' ) {
-						$style .= ' color: ' . esc_attr( $color ) . ';';
+						$style .= ' color: ' . ux_portfolio_esc_css( $color ) . ';';
 					}
 
 					// Optional link
@@ -528,7 +528,7 @@ class UX_Word_Cloud_Widget extends UX_Base_Widget {
 					}
 					$tag = ( $url !== '' ) ? 'a' : 'span';
 					?>
-					<<?php echo $tag; ?> class="ux-wordcloud__word" style="<?php echo $style; ?>"<?php echo $link_attrs; ?>><?php echo esc_html( $text ); ?></<?php echo $tag; ?>>
+					<<?php echo tag_escape( $tag ); ?> class="ux-wordcloud__word" style="<?php echo $style; ?>"<?php echo $link_attrs; ?>><?php echo esc_html( $text ); ?></<?php echo tag_escape( $tag ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- style and link attributes built with esc_url()/esc_attr()/ux_portfolio_esc_css() ?>>
 					<?php
 					++$i;
 				endforeach;

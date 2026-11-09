@@ -37,10 +37,10 @@ trait UX_Tabbed_Trait {
 		$this->add_control(
 			$prefix . '_enable',
 			array(
-				'label'       => sprintf( __( 'Enable %ss', 'ux-portfolio-optimized' ), $noun ),
+				'label'       => sprintf( /* translators: %s: item name, e.g. Map */ __( 'Enable %ss', 'ux-portfolio-optimized' ), $noun ),
 				'type'        => \Elementor\Controls_Manager::SWITCHER,
 				'default'     => '',
-				'description' => sprintf( __( 'Show several %ss, switchable by tabs.', 'ux-portfolio-optimized' ), strtolower( $noun ) ),
+				'description' => sprintf( /* translators: %s: item name, lowercase */ __( 'Show several %ss, switchable by tabs.', 'ux-portfolio-optimized' ), strtolower( $noun ) ),
 			)
 		);
 
@@ -58,14 +58,14 @@ trait UX_Tabbed_Trait {
 		$this->add_control(
 			$prefix . '_default',
 			array(
-				'label'       => sprintf( __( 'Default %s', 'ux-portfolio-optimized' ), $noun ),
+				'label'       => sprintf( /* translators: %s: item name */ __( 'Default %s', 'ux-portfolio-optimized' ), $noun ),
 				'type'        => \Elementor\Controls_Manager::TEXT,
 				'default'     => '',
 				'condition'   => array(
 					$prefix . '_enable'    => 'yes',
 					$prefix . '_show_tabs' => 'yes',
 				),
-				'description' => sprintf( __( 'Name of the %s to open first. Blank = the first one.', 'ux-portfolio-optimized' ), strtolower( $noun ) ),
+				'description' => sprintf( /* translators: %s: item name, lowercase */ __( 'Name of the %s to open first. Blank = the first one.', 'ux-portfolio-optimized' ), strtolower( $noun ) ),
 			)
 		);
 	}

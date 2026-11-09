@@ -521,7 +521,7 @@ class UX_Bar_Chart_Widget extends UX_Base_Widget {
 									}
 									$dim = $orientation === 'vertical' ? 'height' : 'width';
 									?>
-									<div class="ux-stackbar__seg" style="<?php echo $dim; ?>: <?php echo esc_attr( $within ); ?>%; background: <?php echo esc_attr( $color ); ?>;">
+									<div class="ux-stackbar__seg" style="<?php echo esc_attr( $dim ); ?>: <?php echo esc_attr( $within ); ?>%; background: <?php echo ux_portfolio_esc_css( $color ); ?>;">
 										<span class="ux-stackbar__seglabel"><?php echo esc_html( $lbl ); ?>
 										<?php
 										if ( $show_values && $val ) :
@@ -593,7 +593,7 @@ class UX_Bar_Chart_Widget extends UX_Base_Widget {
 								$color     = trim( $b['bar_color'] ?? '' );
 								$bar_style = '--bar-size: ' . $pct . '%;';
 								if ( $color !== '' ) {
-									$bar_style .= ' background: ' . esc_attr( $color ) . ';';
+									$bar_style .= ' background: ' . ux_portfolio_esc_css( $color ) . ';';
 								}
 								?>
 								<div class="ux-barchart__col">
@@ -601,7 +601,7 @@ class UX_Bar_Chart_Widget extends UX_Base_Widget {
 										<?php if ( $show_values ) : ?>
 											<span class="ux-barchart__value"><?php echo esc_html( $b['value'] ?? '0' ); ?><?php echo esc_html( $suffix ); ?></span>
 										<?php endif; ?>
-										<div class="ux-barchart__bar" style="<?php echo $bar_style; ?>"></div>
+										<div class="ux-barchart__bar" style="<?php echo $bar_style; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- built with ux_portfolio_esc_css() and a float ?>"></div>
 									</div>
 									<div class="ux-barchart__label"><?php echo esc_html( $b['label'] ?? '' ); ?></div>
 									<?php if ( trim( (string) ( $b['note'] ?? '' ) ) !== '' ) : ?>
@@ -620,13 +620,13 @@ class UX_Bar_Chart_Widget extends UX_Base_Widget {
 							$color     = trim( $b['bar_color'] ?? '' );
 							$bar_style = '--bar-size: ' . $pct . '%;';
 							if ( $color !== '' ) {
-								$bar_style .= ' background: ' . esc_attr( $color ) . ';';
+								$bar_style .= ' background: ' . ux_portfolio_esc_css( $color ) . ';';
 							}
 							?>
 							<div class="ux-barchart__row">
 								<div class="ux-barchart__label"><?php echo esc_html( $b['label'] ?? '' ); ?></div>
 								<div class="ux-barchart__track">
-									<div class="ux-barchart__bar" style="<?php echo $bar_style; ?>"></div>
+									<div class="ux-barchart__bar" style="<?php echo $bar_style; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- built with ux_portfolio_esc_css() and a float ?>"></div>
 									<?php if ( $show_values ) : ?>
 										<span class="ux-barchart__value"><?php echo esc_html( $b['value'] ?? '0' ); ?><?php echo esc_html( $suffix ); ?></span>
 									<?php endif; ?>

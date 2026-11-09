@@ -70,7 +70,7 @@ class UX_Lens {
 		return array_values( $out );
 	}
 
-	public static function add_controls( $element, $args ) {
+	public static function add_controls( $element, $args ) { // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter.FoundAfterLastUsed -- Elementor passes both arguments
 		$element->start_controls_section(
 			'ux_lens_section',
 			array(

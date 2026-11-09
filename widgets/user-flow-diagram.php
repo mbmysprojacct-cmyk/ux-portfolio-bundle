@@ -942,7 +942,7 @@ class UX_User_Flow_Diagram_Widget extends UX_Base_Widget {
 							}
 							$rel = $rel_parts ? ' rel="' . esc_attr( implode( ' ', $rel_parts ) ) . '"' : '';
 							?>
-							<a class="flow-task-link" href="<?php echo esc_url( $link_url ); ?>"<?php echo $target . $rel; ?>><?php echo esc_html( $link_label ); ?></a>
+							<a class="flow-task-link" href="<?php echo esc_url( $link_url ); ?>"<?php echo $target . $rel; ?>><?php echo esc_html( $link_label ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- target/rel are fixed strings; rel built with esc_attr() ?></a>
 						<?php endif; ?>
 
 						<ul class="flow-task-list">

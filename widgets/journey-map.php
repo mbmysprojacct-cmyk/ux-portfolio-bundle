@@ -625,7 +625,7 @@ class UX_Journey_Map_Widget extends UX_Base_Widget {
 						}
 						$rel = $rel_parts ? ' rel="' . esc_attr( implode( ' ', $rel_parts ) ) . '"' : '';
 						?>
-						<a class="journey-persona__link" href="<?php echo esc_url( $persona_url ); ?>"<?php echo $target . $rel; ?>>
+						<a class="journey-persona__link" href="<?php echo esc_url( $persona_url ); ?>"<?php echo $target . $rel; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- target/rel are fixed strings; rel built with esc_attr() ?>>
 							<?php echo esc_html( $s['persona'] ); ?>
 						</a>
 					<?php else : ?>
@@ -848,7 +848,7 @@ class UX_Journey_Map_Widget extends UX_Base_Widget {
 
 		?>
 		<div class="journey-curve-wrap">
-			<svg class="journey-curve" viewBox="0 0 <?php echo $vb_width; ?> <?php echo $vb_height; ?>" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+			<svg class="journey-curve" viewBox="0 0 <?php echo esc_attr( $vb_width ); ?> <?php echo esc_attr( $vb_height ); ?>" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
 
 				<?php if ( $show_grid ) : ?>
 					<g class="journey-curve__grid">
@@ -856,8 +856,8 @@ class UX_Journey_Map_Widget extends UX_Base_Widget {
 						for ( $score = $min_score; $score <= $max_score; $score++ ) :
 							$gy = $chart_top + $chart_h * ( ( $max_score - $score ) / max( 1, $max_score - $min_score ) );
 							?>
-							<line x1="<?php echo $chart_left; ?>" y1="<?php echo round( $gy, 2 ); ?>"
-									x2="<?php echo $chart_right; ?>" y2="<?php echo round( $gy, 2 ); ?>"
+							<line x1="<?php echo esc_attr( $chart_left ); ?>" y1="<?php echo esc_attr( round( $gy, 2 ) ); ?>"
+									x2="<?php echo esc_attr( $chart_right ); ?>" y2="<?php echo esc_attr( round( $gy, 2 ) ); ?>"
 									stroke="currentColor" stroke-opacity="0.1" stroke-width="1"/>
 						<?php endfor; ?>
 					</g>
@@ -872,15 +872,15 @@ class UX_Journey_Map_Widget extends UX_Base_Widget {
 
 				<?php foreach ( $coords as $c ) : ?>
 					<circle class="journey-curve__dot"
-							cx="<?php echo round( $c['x'], 2 ); ?>"
-							cy="<?php echo round( $c['y'], 2 ); ?>"
+							cx="<?php echo esc_attr( round( $c['x'], 2 ) ); ?>"
+							cy="<?php echo esc_attr( round( $c['y'], 2 ) ); ?>"
 							r="<?php echo (float) $dot_size; ?>"
 							fill="currentColor"/>
 
 					<?php if ( $show_scores ) : ?>
 						<text class="journey-curve__score"
-								x="<?php echo round( $c['x'], 2 ); ?>"
-								y="<?php echo round( $c['y'] - $dot_size - 8, 2 ); ?>"
+								x="<?php echo esc_attr( round( $c['x'], 2 ) ); ?>"
+								y="<?php echo esc_attr( round( $c['y'] - $dot_size - 8, 2 ) ); ?>"
 								text-anchor="middle"
 								font-size="14"
 								font-weight="600"
@@ -895,8 +895,8 @@ class UX_Journey_Map_Widget extends UX_Base_Widget {
 						$emoji_offset = $dot_size + $emoji_half + ( $show_scores ? 22 : 8 );
 						?>
 						<text class="journey-curve__emoji"
-								x="<?php echo round( $c['x'], 2 ); ?>"
-								y="<?php echo round( $c['y'] - $emoji_offset, 2 ); ?>"
+								x="<?php echo esc_attr( round( $c['x'], 2 ) ); ?>"
+								y="<?php echo esc_attr( round( $c['y'] - $emoji_offset, 2 ) ); ?>"
 								text-anchor="middle"
 								dominant-baseline="middle"
 								font-size="<?php echo (float) $emoji_size; ?>"><?php echo esc_html( $c['emoji'] ); ?></text>
@@ -904,8 +904,8 @@ class UX_Journey_Map_Widget extends UX_Base_Widget {
 
 					<?php if ( $show_labels && ! empty( $c['label'] ) ) : ?>
 						<text class="journey-curve__label"
-								x="<?php echo round( $c['x'], 2 ); ?>"
-								y="<?php echo $chart_bottom + 24; ?>"
+								x="<?php echo esc_attr( round( $c['x'], 2 ) ); ?>"
+								y="<?php echo esc_attr( $chart_bottom + 24 ); ?>"
 								text-anchor="middle"
 								font-size="14"
 								fill="currentColor"><?php echo esc_html( $c['label'] ); ?></text>

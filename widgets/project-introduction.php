@@ -750,7 +750,7 @@ class UX_Project_Introduction_Widget extends UX_Base_Widget {
 					$span_full = ( $item['image_span_columns'] === 'yes' ) ? ' span-columns' : '';
 					?>
 					
-					<div class="number-box-single-item elementor-repeater-item-<?php echo esc_attr( $item['_id'] ); ?><?php echo $span_full; ?>">
+					<div class="number-box-single-item elementor-repeater-item-<?php echo esc_attr( $item['_id'] ); ?><?php echo esc_attr( $span_full ); ?>">
 						
 						<?php
 						$wrapper_tag   = 'div';
@@ -770,7 +770,7 @@ class UX_Project_Introduction_Widget extends UX_Base_Widget {
 						}
 						?>
 						
-						<<?php echo $wrapper_tag; ?> <?php echo $wrapper_attrs; ?> class="circle_number_widget_layout layout-<?php echo esc_attr( $s['layout'] ?? 'column' ); ?>">
+						<<?php echo tag_escape( $wrapper_tag ); ?> <?php echo $wrapper_attrs; ?> class="circle_number_widget_layout layout-<?php echo esc_attr( $s['layout'] ?? 'column' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- href built with esc_url(); target/rel fixed strings ?>">
 							
 							<div class="ue-number-container">
 								
@@ -811,7 +811,7 @@ class UX_Project_Introduction_Widget extends UX_Base_Widget {
 								</div>
 							<?php endif; ?>
 							
-						</<?php echo $wrapper_tag; ?>>
+						</<?php echo tag_escape( $wrapper_tag ); ?>>
 						
 					</div>
 					

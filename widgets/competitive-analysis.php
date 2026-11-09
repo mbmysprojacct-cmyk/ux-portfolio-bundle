@@ -114,7 +114,7 @@ class UX_Competitive_Analysis_Widget extends UX_Base_Widget {
 			<table class="ux-competitive-table">
 				<thead>
 					<tr>
-						<th><?php _e( 'Feature', 'ux-portfolio-optimized' ); ?></th>
+						<th><?php esc_html_e( 'Feature', 'ux-portfolio-optimized' ); ?></th>
 						<?php foreach ( $s['competitors'] as $comp ) : ?>
 							<th><?php echo esc_html( $comp['competitor_name'] ); ?></th>
 						<?php endforeach; ?>
@@ -128,7 +128,7 @@ class UX_Competitive_Analysis_Widget extends UX_Base_Widget {
 						<tr>
 							<td><strong><?php echo esc_html( $feature['feature_name'] ); ?></strong></td>
 							<?php foreach ( $ratings as $rating ) : ?>
-								<td><?php echo $this->get_rating_icon( $rating ); ?></td>
+								<td><?php echo $this->get_rating_icon( $rating ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- static SVG icon from get_rating_icon() ?></td>
 							<?php endforeach; ?>
 						</tr>
 					<?php endforeach; ?>

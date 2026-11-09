@@ -587,7 +587,7 @@ class UX_Mockup_Flow_Widget extends UX_Base_Widget {
 							data-elementor-open-lightbox="yes"
 							data-elementor-lightbox-slideshow="<?php echo esc_attr( $slideshow_id ); ?>"
 							data-elementor-lightbox-index="<?php echo esc_attr( $i ); ?>"
-							aria-label="<?php echo esc_attr( $label !== '' ? $label : sprintf( __( 'Screen %d', 'ux-portfolio-optimized' ), $i + 1 ) ); ?>">
+							aria-label="<?php echo esc_attr( $label !== '' ? $label : sprintf( /* translators: %d: screen number */ __( 'Screen %d', 'ux-portfolio-optimized' ), $i + 1 ) ); ?>">
 							<img src="<?php echo esc_url( $img_url ); ?>" alt="<?php echo esc_attr( $label ); ?>" loading="lazy">
 						</a>
 					<?php endif; ?>

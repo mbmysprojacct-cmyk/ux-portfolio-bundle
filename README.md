@@ -66,7 +66,7 @@ assets/fonts/                       Bundled open-license web fonts
 Every push runs two automated checks on GitHub:
 
 - **Syntax** on PHP 7.4, 8.0 and 8.3.
-- **WordPress coding standards** (PHPCS with WPCS), set up in `phpcs.xml.dist`. Formatting, security and best-practice rules fail the check, along with PHP 7.4+ compatibility. Output escaping is reported as warnings: most flagged lines print values escaped earlier in the same function, which a manual audit confirmed. File naming, Yoda conditions and docblock rules are not adopted yet.
+- **WordPress coding standards** (PHPCS with WPCS), set up in `phpcs.xml.dist`. Formatting, security and best-practice rules fail the check, along with PHP 7.4+ compatibility. Output escaping is enforced too: every echo is escaped where it prints, or carries a `phpcs:ignore` note saying where it was escaped. File naming, Yoda conditions and docblock rules are not adopted yet.
 
 To run the same check locally:
 
@@ -84,6 +84,11 @@ The case study template references two display fonts that are not included here 
 The bundled fonts (Architects Daughter, Dosis, Economica and Londrina Solid) are from Google Fonts under the SIL Open Font License.
 
 ## Changelog
+
+**2.21.1** (November 2026)
+- Security: CSS values from widget settings (colors, font names, sizes) go through `ux_portfolio_esc_css()`, which blocks values that could break out of a style rule or load a URL.
+- Output escaping is now a failing check, with zero warnings left.
+- Translator comments on every string with a placeholder; `esc_html_e()` in place of `_e()`.
 
 **2.21.0** (November 2026)
 - Security: inline SVG in Icon List and Brand Assets is now cleaned with a `wp_kses` allowlist (`UX_Base_Widget::kses_svg()`).

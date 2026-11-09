@@ -290,7 +290,7 @@ class UX_Affinity_Map_Widget extends UX_Base_Widget {
 		?>
 		<div class="affinity-group">
 			<?php if ( $title !== '' ) : ?>
-				<h3 class="group-title" style="background: <?php echo esc_attr( $color ); ?>; color: <?php echo esc_attr( $title_text_color ); ?>;">
+				<h3 class="group-title" style="background: <?php echo ux_portfolio_esc_css( $color ); ?>; color: <?php echo ux_portfolio_esc_css( $title_text_color ); ?>;">
 					<?php echo esc_html( $title ); ?>
 				</h3>
 			<?php endif; ?>
@@ -302,7 +302,7 @@ class UX_Affinity_Map_Widget extends UX_Base_Widget {
 						$note_color = $parsed['color'] !== '' ? $parsed['color'] : $color;
 						$over       = $limited && ( $ni >= $limit );
 						?>
-						<div class="sticky-note<?php echo $over ? ' is-over-limit' : ''; ?>" style="--note-color: <?php echo esc_attr( $note_color ); ?>;">
+						<div class="sticky-note<?php echo $over ? ' is-over-limit' : ''; ?>" style="--note-color: <?php echo ux_portfolio_esc_css( $note_color ); ?>;">
 							<?php echo esc_html( $parsed['text'] ); ?>
 						</div>
 					<?php endforeach; ?>
