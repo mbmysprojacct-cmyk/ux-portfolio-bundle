@@ -13,7 +13,7 @@ class UX_Bar_Chart_Widget extends UX_Base_Widget {
 
     public function get_name() { return 'ux-bar-chart'; }
     public function get_title() { return __('Bar Chart', 'ux-portfolio-optimized'); }
-    public function get_icon() { return 'eicon-bar-chart'; }
+    public function get_icon() { return 'eicon-skill-bar'; }
     public function get_keywords() {
         return ['chart', 'bar', 'graph', 'usability', 'data', 'metrics', 'ux'];
     }

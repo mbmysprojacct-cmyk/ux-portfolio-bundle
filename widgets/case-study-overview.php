@@ -9,7 +9,7 @@ class UX_Case_Study_Overview_Widget extends UX_Base_Widget {
     
     public function get_name() { return 'ux-case-study-overview'; }
     public function get_title() { return __('UX Case Study', 'ux-portfolio-optimized'); }
-    public function get_icon() { return 'eicon-portfolio'; }
+    public function get_icon() { return 'eicon-single-post'; }
     
     protected function register_controls() {
         

@@ -11,7 +11,7 @@ class UX_User_Statements_Widget extends UX_Base_Widget {
 
     public function get_name() { return 'ux-user-statements'; }
     public function get_title() { return __('User Statements', 'ux-portfolio-optimized'); }
-    public function get_icon() { return 'eicon-quote'; }
+    public function get_icon() { return 'eicon-blockquote'; }
 
     protected function register_controls() {
 
