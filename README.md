@@ -66,7 +66,7 @@ assets/fonts/                       Bundled open-license web fonts
 Every push runs two automated checks on GitHub:
 
 - **Syntax** on PHP 7.4, 8.0 and 8.3.
-- **WordPress coding standards** (PHPCS with WPCS), set up in `phpcs.xml.dist`. These fail the check: PHP 7.4+ compatibility, SQL preparation, input sanitizing, nonce verification, safe redirects and translation text domains. Output escaping is reported as warnings: most flagged lines print values escaped earlier in the same function, which a manual audit confirmed.
+- **WordPress coding standards** (PHPCS with WPCS), set up in `phpcs.xml.dist`. Formatting, security and best-practice rules fail the check, along with PHP 7.4+ compatibility. Output escaping is reported as warnings: most flagged lines print values escaped earlier in the same function, which a manual audit confirmed. File naming, Yoda conditions and docblock rules are not adopted yet.
 
 To run the same check locally:
 
@@ -74,6 +74,8 @@ To run the same check locally:
 composer install
 composer lint
 ```
+
+`composer lint:fix` reformats files to the WordPress standard automatically.
 
 ## Fonts
 
@@ -87,6 +89,9 @@ The bundled fonts (Architects Daughter, Dosis, Economica and Londrina Solid) are
 - Security: inline SVG in Icon List and Brand Assets is now cleaned with a `wp_kses` allowlist (`UX_Base_Widget::kses_svg()`).
 - User Flow Diagram: text stays inside round nodes, and arrows at the end of a wrapped row are hidden.
 - UX Case Study, User Statements and Bar Chart now use icons from Elementor's free icon set.
+- Code reformatted to the WordPress coding standards, with automated checks on every push.
+- Translation: the case study widgets now use a literal text domain, so their strings can be translated.
+- Competitive Suite: fixed a duplicate condition on the Cards style section.
 
 ## License
 
