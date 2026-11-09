@@ -1,9 +1,12 @@
 <?php
 /**
  * Plugin Name: UX Portfolio Bundle - Optimized
- * Description: All your widgets (50 total), memory-optimized (70-80% reduction)
- * Version: 2.20.6
+ * Description: 51 Elementor widgets for UX and design case studies: personas, journey maps, affinity maps, user flows, storyboards and more, sharing one stylesheet and one script.
+ * Version: 2.21.0
  * Author: Made by Mystie
+ * Author URI: https://www.mystiechamberlin.com/design/
+ * License: GPL-2.0-or-later
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  * Requires PHP: 7.4
  * Text Domain: ux-portfolio-optimized
  */
@@ -199,7 +202,7 @@ class UX_Portfolio_Bundle_Optimized {
             'ux-portfolio-bundle',
             plugins_url('assets/css/ux-bundle.css', __FILE__),
             [],
-            '2.20.6.' . filemtime(__DIR__ . '/assets/css/ux-bundle.css')  // PROPER optimization following original patterns
+            '2.21.0.' . filemtime(__DIR__ . '/assets/css/ux-bundle.css')
         );
     }
     
@@ -208,7 +211,7 @@ class UX_Portfolio_Bundle_Optimized {
             'ux-portfolio-bundle',
             plugins_url('assets/js/ux-bundle.js', __FILE__),
             ['jquery'],
-            '2.20.6.' . filemtime(__DIR__ . '/assets/js/ux-bundle.js'),
+            '2.21.0.' . filemtime(__DIR__ . '/assets/js/ux-bundle.js'),
             true
         );
     }
@@ -218,9 +221,8 @@ class UX_Portfolio_Bundle_Optimized {
         // Base class + trait load on demand via the autoloader when the first
         // widget class is instantiated below — no manual require needed.
 
-        // All Widgets - Complete Suite
+        // Widget slugs. Each maps to widgets/{slug}.php and the class UX_{Slug}_Widget.
         $widgets = [
-            // Phase 1 - Priority Widgets
             'user-persona',
             'logo-grid',
             'case-study-overview',
@@ -231,8 +233,6 @@ class UX_Portfolio_Bundle_Optimized {
             'empathy-map',
             'user-flow-diagram',
             'prototype-display',
-            
-            // Phase 2 - Additional Widgets
             'user-statements',
             'accordion-link',
             'pdf-viewer',
@@ -430,6 +430,6 @@ UX_Portfolio_Bundle_Optimized::instance();
 // Case study layout assets (loaded only by the cs-* widgets that depend on them).
 add_action('init', function () {
     $u = plugins_url('assets/', __FILE__);
-    wp_register_style('ux-cs-layout', $u . 'css/cs-layout.css', [], '2.20.6.' . filemtime(__DIR__ . '/assets/css/cs-layout.css'));
-    wp_register_script('ux-cs-layout', $u . 'js/cs-layout.js', [], '2.20.6.' . filemtime(__DIR__ . '/assets/js/cs-layout.js'), true);
+    wp_register_style('ux-cs-layout', $u . 'css/cs-layout.css', [], '2.21.0.' . filemtime(__DIR__ . '/assets/css/cs-layout.css'));
+    wp_register_script('ux-cs-layout', $u . 'js/cs-layout.js', [], '2.21.0.' . filemtime(__DIR__ . '/assets/js/cs-layout.js'), true);
 });

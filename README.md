@@ -2,7 +2,9 @@
 
 A WordPress plugin of **51 Elementor widgets** for presenting UX and design case studies: personas, journey maps, affinity maps, user flows, storyboards, wireframes, brand systems, charts and the case study page template itself.
 
-I built it for my own portfolio, [Made by Mystie](https://www.mystiechamberlin.com/design/work/), where it powers 15 published case studies.
+I built it for my own portfolio, [Made by Mystie](https://www.mystiechamberlin.com/design/work/), where it powers 15 published case studies. I've developed it privately since 2025 and published it here in November 2026. Development is ongoing: I add and refine widgets as I build out my portfolio.
+
+See it working: [the UX Portfolio Bundle case study](https://www.mystiechamberlin.com/design/work/ux-portfolio-bundle/) has live widgets, a widget reference and code excerpts.
 
 ## Why it exists
 
@@ -62,6 +64,13 @@ assets/fonts/                       Bundled open-license web fonts
 The case study template references two display fonts that are not included here for licensing reasons: **Bulletin Typewriter** and **Beautiful Bloom**. Without them the layout falls back to Courier New and a cursive system font. To use your own, add the `.woff2` files to `assets/fonts/` with those file names, or change the `@font-face` rules in `assets/css/cs-layout.css`.
 
 The bundled fonts (Architects Daughter, Dosis, Economica and Londrina Solid) are from Google Fonts under the SIL Open Font License.
+
+## Changelog
+
+**2.21.0** (November 2026)
+- Security: inline SVG in Icon List and Brand Assets is now cleaned with a `wp_kses` allowlist (`UX_Base_Widget::kses_svg()`).
+- User Flow Diagram: text stays inside round nodes, and arrows at the end of a wrapped row are hidden.
+- UX Case Study, User Statements and Bar Chart now use icons from Elementor's free icon set.
 
 ## License
 
