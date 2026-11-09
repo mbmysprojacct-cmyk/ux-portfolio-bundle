@@ -285,6 +285,14 @@ abstract class UX_Base_Widget extends \Elementor\Widget_Base {
         $clean = wp_kses($svg, $allowed, array('http', 'https'));
         remove_filter('safe_style_css', $svg_css);
 
+        // kses lowercases attribute names; restore SVG's camelCase ones.
+        $camel = array('viewBox', 'preserveAspectRatio', 'gradientUnits', 'gradientTransform', 'spreadMethod',
+            'clipPathUnits', 'maskUnits', 'maskContentUnits', 'patternUnits', 'patternContentUnits',
+            'patternTransform', 'pathLength', 'textLength');
+        foreach ($camel as $name) {
+            $clean = preg_replace('/(\s)' . strtolower($name) . '(\s*=)/', '$1' . $name . '$2', $clean);
+        }
+
         // <use> may only point at fragments inside this SVG.
         $clean = preg_replace('/(<use\b[^>]*?)\s+href\s*=\s*(["\'])(?!#)[^"\']*\2/i', '$1', $clean);
 
