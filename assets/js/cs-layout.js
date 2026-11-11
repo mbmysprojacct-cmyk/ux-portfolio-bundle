@@ -145,7 +145,8 @@
       if (!b) return;
       e.preventDefault();
       if (b.getAttribute('aria-selected') !== 'true') b.click();
-      setTimeout(function () { sync(); target.scrollIntoView({ block: 'start' }); }, 60);
+      // A link to a whole tab pane opens it from the top, like the rail; deeper links scroll to their target.
+      setTimeout(function () { sync(); if (target.classList.contains('mcs-pane')) window.scrollTo({ top: 0, behavior: 'instant' }); else target.scrollIntoView({ block: 'start' }); }, 60);
       try { var u = new URL(window.location.href); u.hash = id; history.replaceState(null, '', u.toString()); } catch (err) {}
     });
     if (window.MutationObserver) new MutationObserver(sync).observe(ntabs, { subtree: true, attributes: true, attributeFilter: ['aria-selected'] });
