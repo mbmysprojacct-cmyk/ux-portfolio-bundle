@@ -27,6 +27,7 @@ class UX_Cs_Rail_Widget extends UX_Base_Widget {
 			'back'      => '<svg ' . $a . '><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>',
 			'case'      => '<svg ' . $a . '><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg>',
 			'portfolio' => '<svg ' . $a . '><rect width="7" height="7" x="3" y="3" rx="1"/><rect width="7" height="7" x="14" y="3" rx="1"/><rect width="7" height="7" x="14" y="14" rx="1"/><rect width="7" height="7" x="3" y="14" rx="1"/></svg>',
+			'extra'     => '<svg ' . $a . '><path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/></svg>',
 			'docs'      => '<svg ' . $a . '><path d="M20 7h-3a2 2 0 0 1-2-2V2"/><path d="M9 18a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h7l4 4v10a2 2 0 0 1-2 2Z"/><path d="M3 7.6v12.8A1.6 1.6 0 0 0 4.6 22h9.8"/></svg>',
 		);
 	}
@@ -150,6 +151,26 @@ class UX_Cs_Rail_Widget extends UX_Base_Widget {
 				'tab'   => $k === 'case' || $pane !== '',
 				'pane'  => $pane,
 			);
+		}
+		// Optional extra view per case study, set in post meta: mbm_view_extra_label and
+		// mbm_view_extra_url ("#pane-id" of a container on this page), plus optional mbm_view_extra_desc.
+		// It sits before Documents so the reference files stay last.
+		$x_label = $pid ? sanitize_text_field( (string) get_post_meta( $pid, 'mbm_view_extra_label', true ) ) : '';
+		$x_url   = $pid ? (string) get_post_meta( $pid, 'mbm_view_extra_url', true ) : '';
+		$x_pane  = strpos( $x_url, '#' ) === 0 ? sanitize_html_class( substr( $x_url, 1 ) ) : '';
+		if ( $x_label !== '' && $x_pane !== '' ) {
+			$extra = array(
+				'extra' => array(
+					'label' => $x_label,
+					'desc'  => sanitize_text_field( (string) get_post_meta( $pid, 'mbm_view_extra_desc', true ) ),
+					'url'   => '#' . $x_pane,
+					'cur'   => false,
+					'tab'   => true,
+					'pane'  => $x_pane,
+				),
+			);
+			$at    = array_search( 'docs', array_keys( $views ), true );
+			$views = false === $at ? $views + $extra : array_slice( $views, 0, $at, true ) + $extra + array_slice( $views, $at, null, true );
 		}
 		$tab_attrs = function ( $k, $v ) {
 			if ( ! $v['tab'] ) {
