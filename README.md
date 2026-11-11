@@ -18,6 +18,10 @@ So I rebuilt them as a single plugin:
 - **Native Elementor controls.** Every artifact is edited in the Elementor panel, with repeaters for items and responsive style controls, so content stays editable instead of baked into images.
 - **Global colors.** Widgets use Elementor's global color system, so a case study can follow its project's palette.
 
+## How it was made
+
+I designed the widgets and directed the build with an AI coding assistant (Claude). I decided what each widget does, reviewed and tested every one in real case studies, and ran the security and code-quality checks.
+
 ## Widgets
 
 **Research** (9): User Persona (`ux-user-persona`) · Empathy Map (`ux-empathy-map`) · Affinity Map (`ux-affinity-map`) · User Statements (`ux-user-statements`) · Competitive Analysis (`ux-competitive-analysis`) · Visual Competitive Analysis (`ux-visual-competitive-analysis`) · Competitive Suite (`ux-competitive-suite`) · Competitive Differentiation (`ux-competitive-differentiation`) · SWOT Analysis (`ux-swot-analysis`)
