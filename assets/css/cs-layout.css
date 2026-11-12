@@ -648,3 +648,6 @@ html:not([data-mcs-view="case"])[data-mcs-view] :is(.elementor-widget-ux-cs-hero
 @media(min-width:601px){.mcs-proto-full-w,.mcs-proto-full-w .elementor-widget-container{justify-content:center}}
 
 .mcs-proto-full-w.mcs-proto-full-w--flow{margin-bottom:12px!important}
+
+/* Image captions: a quiet left-aligned note in the body face, not Elementor's centered italic Roboto. */
+.mcs-shell figcaption,.mcs-shell .widget-image-caption{text-align:left!important;font-family:var(--font-body)!important;font-style:normal!important;font-weight:300;font-size:15px!important;line-height:1.5;color:var(--text-secondary)!important;max-width:68ch;margin:10px 0 0!important}
